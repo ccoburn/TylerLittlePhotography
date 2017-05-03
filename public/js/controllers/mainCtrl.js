@@ -1,7 +1,13 @@
-angular.module('app').controller('mainCtrl', function($scope) {
+angular.module('app').controller('mainCtrl', function($scope, mediaService) {
 
 
-  $scope.test = "hello"
+  $scope.getMedia = function() {
+    mediaService.getMedia().then(function(response) {
+      $scope.media = response;
+    })
+  }
+
+  $scope.getMedia();
 
 
 

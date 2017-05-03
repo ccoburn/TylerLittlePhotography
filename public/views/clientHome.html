@@ -1,0 +1,25 @@
+<nav>
+  <ul>
+    <a ui-sref="home">Home</a>
+    <a ui-sref="about">about</a>
+    <a ui-sref="contact">contact</a>
+    <a ui-sref="photos">photos</a>
+    <a ui-sref="videos">videos</a>
+    <a ui-sref="signin">signin</a>
+  </ul>
+</nav>
+
+
+<h1>{{albums[0].username}}</h1>
+
+<section class='album-covers'>
+
+<div class="album-cover-box" ng-repeat='album in albums'>
+  <img class="album-cover" ng-src="{{album.cover}}" alt="" ui-sref="clientAlbum({id: {{album.id}}})">
+  <br>
+  <h2>{{album.name}}</h2>
+  <h2>{{album.jobdate | dateToISO | date:'shortDate'}}</h2>
+
+</div>
+
+</section>

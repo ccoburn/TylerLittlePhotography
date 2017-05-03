@@ -1,0 +1,55 @@
+ul {
+  display: flex;
+  justify-content: space-around;
+  margin: 0px 5px;
+}
+
+h1 {
+  font-size: 40px;
+  margin-top: 30px;
+  text-align: center;
+  color: black;
+}
+
+h2 {
+  text-align: center;
+  font-size: 30px
+}
+
+li {
+  list-style-type: none;
+  color: white
+}
+
+
+.full-background {
+  margin-top: 0px;
+  width: 100%;
+  height: 100vh;
+  background: url('https://s3-us-west-2.amazonaws.com/tyler-little-photography/wedding-photography-30.jpg') no-repeat;
+  background-size: cover;
+  padding-top: 20px;
+}
+
+.album-covers {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.album-cover-box {
+  width: 300px;
+}
+
+.album-cover {
+  width: 300px;
+  margin-bottom: 10px;
+}
+
+.photo-box {
+  width: 300px;
+}
+
+.photo {
+  width: 300px;
+}

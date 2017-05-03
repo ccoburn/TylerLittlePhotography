@@ -1,0 +1,21 @@
+<div>
+<select ng-options="album as album.name for album in sampleAlbums track by album.id" ng-model="sampleSelected"></select>
+</div>
+
+  <br>
+  <br>
+
+  <div>
+  <select ng-options="album as album.name for album in clientAlbums track by album.id" ng-model="clientSelected"></select>
+  </div>
+<br>
+<br>
+<h2>Add Client Album</h2>
+<form class="" action="index.html" method="post">
+  <p>name of album</p>
+  <input type="text" name="" value="" placeholder="name of album" ng-model="album.name">
+  <p>date of job</p>
+  <input type="text" name="" value="" placeholder="YYYY-MM-DD" ng-model="album.date">
+  <button type="button" name="button" ng-click="addAlbum(album)">Add Album</button>
+
+</form>
