@@ -42,8 +42,8 @@ angular.module('app').service('mediaService', function($http) {
     })
   }
 
-  this.getSampleVideos = function(id) {
-    return $http.get('http://localhost:5350/api/SampleVideoAlbum/' + id).then(function(response) {
+  this.getSampleVideos = function() {
+    return $http.get('http://localhost:5350/api/SampleVideos').then(function(response) {
       console.log(response.data);
       return response.data;
     })

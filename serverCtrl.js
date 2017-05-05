@@ -46,7 +46,7 @@ module.exports = {
       })
     },
     getSampleVideos: function(req, res, next) {
-      db.getSampleVideos([req.params.id], function(err, photos) {
+      db.getSampleVideos(function(err, photos) {
         res.status(200).send(photos)
       })
     },

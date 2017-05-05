@@ -3,13 +3,13 @@ angular.module('app').controller('videosCtrl', function($scope, mediaService, $s
 
   $scope.test = "videos"
 
-  $scope.getVideoSampleAlbums = function() {
-    mediaService.getVideoSampleAlbums().then(function(response) {
-      $scope.albums = response;
+  $scope.getSampleVideos = function() {
+    mediaService.getSampleVideos().then(function(response) {
+      $scope.videos = response;
     })
   }
 
-  $scope.getVideoSampleAlbums();
+  $scope.getSampleVideos();
 
 
 })

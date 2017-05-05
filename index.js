@@ -97,9 +97,9 @@ app.get('/api/ClientAlbums/:id', serverCtrl.getClientAlbums)
 // get media by Client Album for photo album view
 app.get('/api/ClientAlbum/:id', serverCtrl.getClientAlbum)
 // get SampleAlbums by type for videos view
-app.get('/api/SampleVideos', serverCtrl.getVideoSampleAlbums)
+app.get('/api/SampleVideos', serverCtrl.getSampleVideos)
 // get media by SampleAlbums id for video album view
-app.get('/api/SampleVideoAlbum/:id', serverCtrl.getSampleVideos)
+// app.get('/api/SampleVideoAlbum/:id', serverCtrl.getSampleVideos)
 // get albums list of names and rename name columns
 app.get('/api/SampleAlbums', serverCtrl.getAllSampleAlbums)
 app.get('/api/AllClientAlbums', serverCtrl.getAllClientAlbums)

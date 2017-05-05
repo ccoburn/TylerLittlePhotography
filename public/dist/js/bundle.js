@@ -265,13 +265,13 @@ angular.module('app').controller('videosCtrl', function ($scope, mediaService, $
 
   $scope.test = "videos";
 
-  $scope.getVideoSampleAlbums = function () {
-    mediaService.getVideoSampleAlbums().then(function (response) {
-      $scope.albums = response;
+  $scope.getSampleVideos = function () {
+    mediaService.getSampleVideos().then(function (response) {
+      $scope.videos = response;
     });
   };
 
-  $scope.getVideoSampleAlbums();
+  $scope.getSampleVideos();
 });
 "use strict";
 'use strict';
@@ -320,8 +320,8 @@ angular.module('app').service('mediaService', function ($http) {
     });
   };
 
-  this.getSampleVideos = function (id) {
-    return $http.get('http://localhost:5350/api/SampleVideoAlbum/' + id).then(function (response) {
+  this.getSampleVideos = function () {
+    return $http.get('http://localhost:5350/api/SampleVideos').then(function (response) {
       console.log(response.data);
       return response.data;
     });

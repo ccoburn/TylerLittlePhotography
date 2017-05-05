@@ -1,5 +1,5 @@
 angular.module("app", ['ui.router'])
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $sceDelegateProvider) {
 
 
   $urlRouterProvider.otherwise('/');
@@ -60,6 +60,13 @@ angular.module("app", ['ui.router'])
     templateUrl: './views/adminHome.html',
     controller: 'adminHomeCtrl'
   })
+
+  $sceDelegateProvider.resourceUrlWhitelist([
+    // Allow same origin resource loads.
+    'self',
+    // Allow loading from our assets domain. **.
+    'https://s3-us-west-2.amazonaws.com/tyler-little-photography/**'
+  ]);
 
 
 
