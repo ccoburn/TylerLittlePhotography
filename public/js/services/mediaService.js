@@ -70,5 +70,32 @@ angular.module('app').service('mediaService', function($http) {
     })
   }
 
+  this.storeImage = function (imageData, fileName, type, clientId, sampleId) {
+    var imageExtension = imageData.split(';')[0].split('/');
+    imageExtension = imageExtension[imageExtension.length - 1];
+
+    var newImage = {
+      imageName: fileName,
+      imageBody: imageData,
+      imageExtension: imageExtension,
+      type: type,
+      clientId: clientId,
+      sampleId: sampleId
+    }
+
+    return $http.post('http://localhost:5350/api/uploadImage', newImage)
+  }
+
+  this.getUserNames = function() {
+    return $http.get('http://localhost:5350/api/UserNames').then(function(response) {
+      console.log(response.data);
+      return response.data;
+    })
+  }
+
+  this.addUserToAlbum = function(userid, albumid) {
+    return $http.post('http://localhost:5350/api/addUserToAlbum', {userid: userid, albumid: albumid})
+  }
+
 
 })

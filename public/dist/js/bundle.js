@@ -1,5 +1,47 @@
 'use strict';
 
+angular.module('app').directive('fileread', function (mediaService) {
+  return {
+    restrict: 'A',
+    link: function link(scope, elem, attrs) {
+      elem.bind("change", function (changeEvent) {
+        var reader = new FileReader();
+
+        reader.onloadend = function (loadEvent) {
+          debugger;
+          var fileread = loadEvent.target.result;
+          // console.warn(fileread);
+
+
+          var tempArray = elem[0].value.split('\\');
+
+          var fileName = tempArray[tempArray.length - 1];
+          var type = scope.type;
+          var clientId = null;
+          var sampleId = null;
+          if (scope.client) {
+            clientId = scope.client.id;
+          }
+          if (scope.sample) {
+            sampleId = scope.sample.id;
+          }
+
+          console.log(type, clientId, sampleId);
+
+          mediaService.storeImage(fileread, fileName, type, clientId, sampleId).then(function (result) {
+            scope.images.unshift(result.data);
+          }).catch(function (err) {
+            console.error(err);
+          });
+        };
+
+        reader.readAsDataURL(changeEvent.target.files[0]);
+      });
+    }
+  };
+});
+'use strict';
+
 angular.module('app').controller('aboutCtrl', function ($scope) {
 
   $scope.test = "about";
@@ -27,6 +69,25 @@ angular.module('app').controller('adminHomeCtrl', function ($scope, mediaService
   $scope.addAlbum = function (album) {
     mediaService.addAlbum(album).then(function (response) {
       console.log(album);
+      return response;
+    });
+  };
+
+  $scope.images = [];
+
+  $scope.getUserNames = function () {
+    mediaService.getUserNames().then(function (response) {
+      $scope.users = response;
+    });
+  };
+
+  $scope.getUserNames();
+
+  $scope.addUserToAlbum = function (user, album) {
+    var userid = $scope.user.id;
+    var albumid = $scope.album.id;
+    console.log(userid, albumid);
+    mediaService.addUserToAlbum(userid, albumid).then(function (response) {
       return response;
     });
   };
@@ -68,7 +129,7 @@ angular.module('app').controller('contactCtrl', function ($scope) {
 });
 'use strict';
 
-angular.module('app').controller('mainCtrl', function ($scope, mediaService) {
+angular.module('app').controller('mainCtrl', function ($scope, mediaService, signinService) {
 
   $scope.getMedia = function () {
     mediaService.getMedia().then(function (response) {
@@ -77,6 +138,26 @@ angular.module('app').controller('mainCtrl', function ($scope, mediaService) {
   };
 
   $scope.getMedia();
+
+  function getUser() {
+    signinService.getUser().then(function (user) {
+      if (user) $scope.user = user.username;else $scope.user = 'NOT LOGGED IN';
+    });
+  }
+
+  getUser();
+
+  $scope.loginLocal = function (username, password) {
+    console.log('Logging in with', username, password);
+    signinService.loginLocal({
+      username: username,
+      password: password
+    }).then(function (res) {
+      getUser();
+    });
+  };
+
+  $scope.logout = signinService.logout;
 });
 'use strict';
 
@@ -106,7 +187,7 @@ angular.module('app').controller('photoAlbumCtrl', function ($scope, mediaServic
 });
 'use strict';
 
-angular.module('app').controller('photosCtrl', function ($scope, mediaService) {
+angular.module('app').controller('photosCtrl', function ($scope, mediaService, signinService) {
 
   $scope.test = "photos";
 
@@ -117,13 +198,51 @@ angular.module('app').controller('photosCtrl', function ($scope, mediaService) {
   };
 
   $scope.getPhotoSampleAlbums();
+
+  function getUser() {
+    signinService.getUser().then(function (user) {
+      if (user) $scope.user = user.username;else $scope.user = 'NOT LOGGED IN';
+    });
+  }
+
+  getUser();
+
+  $scope.loginLocal = function (username, password) {
+    console.log('Logging in with', username, password);
+    signinService.loginLocal({
+      username: username,
+      password: password
+    }).then(function (res) {
+      getUser();
+    });
+  };
+
+  $scope.logout = signinService.logout;
 });
 "use strict";
 'use strict';
 
-angular.module('app').controller('signinCtrl', function ($scope) {
+angular.module('app').controller('signinCtrl', function ($scope, signinService, $state) {
 
-  $scope.test = "signin";
+  function getUser() {
+    signinService.getUser().then(function (user) {
+      if (user) $scope.user = user.username;else $scope.user = 'NOT LOGGED IN';
+    });
+  }
+
+  getUser();
+
+  $scope.loginLocal = function (username, password) {
+    console.log('Logging in with', username, password);
+    signinService.loginLocal({
+      username: username,
+      password: password
+    }).then(function (res) {
+      getUser();
+    });
+  };
+
+  $scope.logout = signinService.logout;
 });
 "use strict";
 'use strict';
@@ -228,6 +347,69 @@ angular.module('app').service('mediaService', function ($http) {
       return response;
     });
   };
+
+  this.storeImage = function (imageData, fileName, type, clientId, sampleId) {
+    var imageExtension = imageData.split(';')[0].split('/');
+    imageExtension = imageExtension[imageExtension.length - 1];
+
+    var newImage = {
+      imageName: fileName,
+      imageBody: imageData,
+      imageExtension: imageExtension,
+      type: type,
+      clientId: clientId,
+      sampleId: sampleId
+    };
+
+    return $http.post('http://localhost:5350/api/uploadImage', newImage);
+  };
+
+  this.getUserNames = function () {
+    return $http.get('http://localhost:5350/api/UserNames').then(function (response) {
+      console.log(response.data);
+      return response.data;
+    });
+  };
+
+  this.addUserToAlbum = function (userid, albumid) {
+    return $http.post('http://localhost:5350/api/addUserToAlbum', { userid: userid, albumid: albumid });
+  };
 });
-"use strict";
+'use strict';
+
+angular.module('app').service('signinService', function ($http) {
+  this.loginLocal = function (credentials) {
+    return $http({
+      method: "POST",
+      url: '/auth/local',
+      data: credentials
+    }).then(function (res) {
+      return res.data;
+    }).catch(function (err) {
+      console.log('ERROR LOGGING IN!', err);
+    });
+  };
+
+  this.getUser = function () {
+    return $http({
+      method: 'GET',
+      url: '/auth/me'
+    }).then(function (res) {
+      return res.data;
+    }).catch(function (err) {
+      console.log(err);
+    });
+  };
+
+  this.logout = function () {
+    return $http({
+      method: 'GET',
+      url: '/auth/logout'
+    }).then(function (res) {
+      return res.data;
+    }).catch(function (err) {
+      console.log(err);
+    });
+  };
+});
 //# sourceMappingURL=bundle.js.map

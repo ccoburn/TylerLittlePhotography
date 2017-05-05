@@ -1,5 +1,17 @@
 const app = require('./index');
 const db = app.get('db');
+const AWS = require('aws-sdk');
+const config = require('./config');
+
+AWS.config.update({
+    accessKeyId: config.amazonAccess
+  , secretAccessKey: config.amazonSecret
+  , region: config.amazonRegion
+});
+
+const s3 = new AWS.S3();
+
+var location = ''
 
 module.exports = {
 
@@ -49,13 +61,47 @@ module.exports = {
       })
     },
     addAlbum: function(req, res, next) {
-      console.log(req.body.name, req.body.date)
       db.addAlbum([req.body.name, req.body.date], function(err, added) {
         res.status(200).send(added)
       })
+    },
+    uploadImage: function (req, res, next) {
+      var buf = new Buffer(req.body.imageBody.replace(/^data:image\/\w+;base64,/, ""), 'base64');
+
+      var params = {
+          Bucket: 'tyler-little-photography'
+        , Key: req.body.imageName
+        , Body: buf
+        , ContentType: 'image/' + req.body.imageExtension
+        , ACL: 'public-read'
+      };
+
+      s3.upload(params, function (err, data) {
+        console.log(data.Location);
+        // location = data.Location;
+        if (err) return res.status(500).send(err);
+        console.log(req.body.type, data.Location, req.body.clientId, req.body.sampleId);
+        db.addMedia([req.body.type, data.Location, req.body.clientId, req.body.sampleId], function(err, added) {
+          res.status(200).send(added)
+        })
+      });
+    },
+    addMedia: function (req, res, next) {
+    console.log(req.body.type, location, req.body.clientId, req.body.sampleId);
+    db.addMedia([req.body.type, location, req.body.clientId, req.body.sampleId], function(err, added) {
+      res.status(200).send(added)
+      })
+    },
+    getUserNames: function(req, res, next) {
+      db.getUserNames(function(err, names) {
+        res.status(200).send(names)
+      })
+    },
+    addUserToAlbum: function(req, res, next) {
+      db.addUserToAlbum([req.body.userid, req.body.albumid], function(err, updated) {
+        res.status(200).send(updated)
+      })
     }
-
-
 
 
 

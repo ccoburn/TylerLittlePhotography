@@ -1,12 +1,12 @@
 <div>
-<select ng-options="album as album.name for album in sampleAlbums track by album.id" ng-model="sampleSelected"></select>
+
 </div>
 
   <br>
   <br>
 
   <div>
-  <select ng-options="album as album.name for album in clientAlbums track by album.id" ng-model="clientSelected"></select>
+
   </div>
 <br>
 <br>
@@ -17,5 +17,31 @@
   <p>date of job</p>
   <input type="text" name="" value="" placeholder="YYYY-MM-DD" ng-model="album.date">
   <button type="button" name="button" ng-click="addAlbum(album)">Add Album</button>
+
+</form>
+
+<h2>Add Media</h2>
+
+<form class="" action="index.html" method="post">
+  <p>type</p>
+  <select class="" name="Type" ng-model="type">
+    <option value="photo">photo</option>
+    <option value="video">video</option>
+<p>sample album</p>
+  </select>
+  <select ng-options="album as album.name for album in sampleAlbums track by album.id" ng-model="sample"></select>
+  <p>client album</p>
+  <select ng-options="album as album.name for album in clientAlbums track by album.id" ng-model="client"></select>
+  <p>image</p>
+  <input type="file" fileread accept="image/*">
+
+</form>
+<h2>Assign user to client album</h2>
+<form class="" action="index.html" method="post">
+  <p>client album</p>
+  <select ng-options="album as album.name for album in clientAlbums track by album.id" ng-model="album"></select>
+  <p>user</p>
+  <select ng-options="user as user.username for user in users track by user.username" ng-model="user"></select>
+  <button type="button" name="button" ng-click="addUserToAlbum(user, album)">Assign</button>
 
 </form>
