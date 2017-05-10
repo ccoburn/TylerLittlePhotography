@@ -1,26 +1,18 @@
-<nav>
-  <ul>
-    <a ui-sref="home">Home</a>
-    <a ui-sref="about">about</a>
-    <a ui-sref="contact">contact</a>
-    <a ui-sref="photos">photos</a>
-    <a ui-sref="videos">videos</a>
-    <a ui-sref="signin">signin</a>
-  </ul>
-</nav>
+<wedding ng-show='wedding'></wedding>
+<couples ng-show="couples"></couples>
+<families ng-show='families'></families>
+<newborns ng-show='newborns'></newborns>
+<highschool ng-show='highschool'></highschool>
 
 
-<h1>{{photos[0].name}}</h1>
-
-<br>
-<br>
-<section>
-
-<div class="photo-box" ng-repeat="photo in photos">
-  <a href="{{photo.url}}"><img ng-src="{{photo.url}}" alt="" class="photo" ></a>
-  <br>
-  <hr>
-
-
+<!-- <div class="grey darken-2"> -->
+  <div class="container relative2">
+    <div class="flex-wrapper-wrap">
+      <div ng-repeat="photo in photos">
+        <div class="photo-box rounded responsive-img z-depth-3">
+          <img materialboxed class="materialboxed photo" ng-src="{{photo.url}}">
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-</section>

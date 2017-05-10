@@ -1,4 +1,4 @@
-angular.module('app').controller('adminHomeCtrl', function($scope, mediaService) {
+angular.module('app').controller('adminHomeCtrl', function($scope, mediaService, signinService) {
 
   $scope.getAllSampleAlbums = function() {
     mediaService.getAllSampleAlbums().then(function(response) {
@@ -16,9 +16,9 @@ angular.module('app').controller('adminHomeCtrl', function($scope, mediaService)
 
   $scope.getAllClientAlbums();
 
-  $scope.addAlbum = function(album) {
-    mediaService.addAlbum(album).then(function(response) {
-      console.log(album);
+  $scope.addAlbum = function(newalbum) {
+    console.log(newalbum);
+    mediaService.addAlbum(newalbum).then(function(response) {
       return response
     })
   }
@@ -43,7 +43,27 @@ angular.module('app').controller('adminHomeCtrl', function($scope, mediaService)
   }
 
 
+  function getUser() {
+    signinService.getUser().then(function(user) {
+      if (user) $scope.user = user.username;
+      else   $scope.user = 'NOT LOGGED IN';
+    })
+  }
 
+  getUser();
+
+  $scope.loginLocal = function(username, password) {
+    console.log('Logging in with', username, password);
+    signinService.loginLocal({
+      username: username,
+      password: password
+    })
+    .then(function(res) {
+      getUser();
+    })
+  }
+
+  $scope.logout = signinService.logout;
 
 
 

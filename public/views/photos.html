@@ -1,26 +1,41 @@
-<nav>
-  <ul>
-    <a ui-sref="home">Home</a>
-    <a ui-sref="about">about</a>
-    <a ui-sref="contact">contact</a>
-    <a ui-sref="photos">photos</a>
-    <a ui-sref="videos">videos</a>
-    <a href="/auth">signin</a>
-    <p>Hello {{user}}</p>
-  </ul>
+<nav class="navbackground">
+  <div class="nav-wrapper">
+    <ul id="nav-mobile" class="hide-on-med-and-down flex-wrapper">
+      <li><a ui-sref="home">Home</a></li>
+      <li><a ui-sref="about">About</a></li>
+      <li><a ui-sref="photos">Photos<a/></li>
+      <li><a ui-sref="videos">Videos<a/></li>
+      <li><a href="/auth">signin</a></li>
+      <li><a ui-sref="adminHome">admin</a></li>
+      <li>
+        <p>{{user}}</p>
+      </li>
+    </ul>
+  </div>
 </nav>
+<!-- <div class="grey darken-2"> -->
+
+  <div class="container">
+    <br>
+    <div class="flex-wrapper-wrap">
+      <div class="album-cover-box rounded" ng-repeat="album in albums">
+        <div class="row rounded">
+          <div class="col s12 m7 rounded">
+            <div class="card large rounded">
+              <div class="card-image rounded">
+                <img class ="rounded" src="{{album.cover}}" ui-sref="photoAlbum({id: {{album.id}}})">
+                <span class="card-title">{{album.name}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
 
 
-<h1>{{test}}</h1>
-<br>
-<br>
-<section class="album-covers">
 
-<div class="album-cover-box" ng-repeat="album in albums">
-  <img class="album-cover" ng-src="{{album.cover}}" alt="" ui-sref="photoAlbum({id: {{album.id}}})">
-  <br>
-  <h2>{{album.name}}</h2>
-
+      <!-- <h2>{{album.name}}</h2>
+      <img class="album-cover z-depth-2" ng-src="{{album.cover}}" alt="" ui-sref="photoAlbum({id: {{album.id}}})"> -->
+    </div>
+  </div>
 </div>
-
-</section>

@@ -10,7 +10,7 @@ var gulp = require('gulp')
 var cachebust = new Cachebuster();
 
 gulp.task('build-css', function(){
-  gulp.src('./styles/*')
+  gulp.src('./styles/**/**')
   .pipe(sourcemaps.init())
   .pipe(sass())
   .pipe(cachebust.resources())
@@ -20,7 +20,7 @@ gulp.task('build-css', function(){
 })
 
 gulp.task('build-js', function() {
-   return gulp.src('js/**/*.js')
+   return gulp.src('js/**/**/*.js')
       .pipe(sourcemaps.init())
       .pipe(print())
       .pipe(babel({ presets: ['es2015'] }))

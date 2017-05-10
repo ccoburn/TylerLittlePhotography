@@ -131,7 +131,7 @@ app.get('/auth/logout', function(req, res) {
 
 
 // Connections
-var portNum = 5350;
+var portNum = 3000;
 
 
 app.listen(portNum, function () {

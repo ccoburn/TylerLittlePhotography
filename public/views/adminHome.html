@@ -1,47 +1,122 @@
-<div>
-
-</div>
-
-  <br>
-  <br>
-
-  <div>
-
+<nav class="navbackground">
+  <div class="nav-wrapper">
+    <ul id="nav-mobile" class="hide-on-med-and-down flex-wrapper">
+      <li><a ui-sref="home">Home</a></li>
+      <li><a ui-sref="about">About</a></li>
+      <li><a ui-sref="photos">Photos<a/></li>
+      <li><a ui-sref="videos">Videos<a/></li>
+      <li><a href="/auth">signin</a></li>
+      <li><a ui-sref="adminHome">admin</a></li>
+      <li><p>{{user}}</p></li>
+    </ul>
   </div>
-<br>
-<br>
-<h2>Add Client Album</h2>
-<form class="" action="index.html" method="post">
-  <p>name of album</p>
-  <input type="text" name="" value="" placeholder="name of album" ng-model="album.name">
-  <p>date of job</p>
-  <input type="text" name="" value="" placeholder="YYYY-MM-DD" ng-model="album.date">
-  <button type="button" name="button" ng-click="addAlbum(album)">Add Album</button>
+</nav>
 
-</form>
+<div class="container">
 
-<h2>Add Media</h2>
+  <div class="section">
+    <h2>Add Client Album</h2>
+    <form class="" action="index.html" method="post">
+      <div class="row input-field">
+        <input class="col s3" type="text" name="" value="" ng-model="newalbum.name">
+        <label>Name of Album</label>
+      </div>
+      <div input-field class="row input-field">
+        <input class="col s3" type="text" name="" value="" placeholder="YYYY-MM-DD" ng-model="newalbum.date">
+        <label>Date of Job</label>
+      </div>
+      <a class="waves-effect waves-light btn" ng-click="addAlbum(newalbum)"><i class="material-icons right">perm_media</i>Add Album</a>
+    </form>
+  </div>
+  <div class="divider"></div>
 
-<form class="" action="index.html" method="post">
-  <p>type</p>
-  <select class="" name="Type" ng-model="type">
-    <option value="photo">photo</option>
-    <option value="video">video</option>
-<p>sample album</p>
-  </select>
-  <select ng-options="album as album.name for album in sampleAlbums track by album.id" ng-model="sample"></select>
-  <p>client album</p>
-  <select ng-options="album as album.name for album in clientAlbums track by album.id" ng-model="client"></select>
-  <p>image</p>
-  <input type="file" fileread accept="image/*">
 
-</form>
-<h2>Assign user to client album</h2>
-<form class="" action="index.html" method="post">
-  <p>client album</p>
-  <select ng-options="album as album.name for album in clientAlbums track by album.id" ng-model="album"></select>
-  <p>user</p>
-  <select ng-options="user as user.username for user in users track by user.username" ng-model="user"></select>
-  <button type="button" name="button" ng-click="addUserToAlbum(user, album)">Assign</button>
+  <div class="section">
+    <h2>Add Media</h2>
+    <form class="row" method="post">
+      <div class="row">
 
-</form>
+        <div input-field class="input field col s3">
+          <select class="" ng-model="type" material-select watch>
+      <option value="photo">photo</option>
+      <option value="video">video</option>
+    </select>
+          <label>Type</label>
+        </div>
+      </div>
+      <div class="row">
+        <div input-field class="input-field col s4">
+          <select class="" ng-model="sample" material-select watch>
+      <option value="" disabled selected>None</option>
+      <option ng-repeat="album in sampleAlbums">{{album.name}}</option>
+    </select>
+          <label>Sample Album</label>
+        </div>
+
+        <div input-field class="input-field col s4">
+          <select class="" ng-model="client" material-select watch>
+      <option value="" disabled selected>None</option>
+      <option ng-repeat="album in clientAlbums">{{album.name}}</option>
+    </select>
+          <label>Client Album</label>
+        </div>
+      </div>
+
+      <form action="#">
+        <label>Image</label>
+        <div class="file-field input-field">
+          <div class="btn">
+            <span><i class="material-icons right">library_add</i>Choose Image</span>
+            <input type="file" fileread accept="image/*">
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text">
+          </div>
+        </div>
+      </form>
+    </form>
+  </div>
+  <div class="divider"></div>
+
+  <div class="section">
+    <h2>Assign user to client album</h2>
+    <form class="" action="index.html" method="post">
+      <div class="row">
+        <div input-field class="input-field col s4">
+          <select class="" ng-model="album" material-select watch>
+        <option value="" disabled selected>None</option>
+        <option ng-repeat="album in clientAlbums">{{album.name}}</option>
+      </select>
+          <label>Client Album</label>
+        </div>
+        <div input-field class="input-field col s4">
+          <select class="" ng-model="user" material-select watch>
+        <option value="" disabled selected>None</option>
+        <option ng-repeat="user in users">{{user.username}}</option>
+      </select>
+          <label>Client</label>
+        </div>
+      </div>
+      <a class="waves-effect waves-light btn" ng-click="addUserToAlbum(user, album)"><i class="material-icons right">contacts</i>Assign</a>
+    </form>
+  </div>
+
+  <!-- <button type="button" name="button" ng-click="addAlbum(album)">Add Album</button> -->
+  <!-- <p>name of album</p>
+<input class="col s3"type="text" name="" value="" placeholder="name of album" ng-model="album.name">
+<p>date of job</p>
+<input class="col s3" type="text" name="" value="" placeholder="YYYY-MM-DD" ng-model="album.date"> -->
+  <!-- <select class="" name="Type" ng-model="type">
+<option value="photo">photo</option>
+<option value="video">video</option> -->
+  <!-- <p>sample album</p> -->
+  <!-- <select ng-options="album as album.name for album in sampleAlbums track by album.id" ng-model="sample"></select>
+<p>client album</p>
+<select ng-options="album as album.name for album in clientAlbums track by album.id" ng-model="client"></select> -->
+  <!-- <input type="file" fileread accept="image/*"> -->
+  <!-- <p>client album</p>
+<select ng-options="album as album.name for album in clientAlbums track by album.id" ng-model="album"></select>
+<p>user</p>
+<select ng-options="user as user.username for user in users track by user.username" ng-model="user"></select>
+<button type="button" name="button" ng-click="addUserToAlbum(user, album)">Assign</button>
+</div> -->

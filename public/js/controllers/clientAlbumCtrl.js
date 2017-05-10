@@ -1,4 +1,4 @@
-angular.module('app').controller('clientAlbumCtrl', function($scope, mediaService, $stateParams) {
+angular.module('app').controller('clientAlbumCtrl', function($scope, mediaService, $stateParams, signinService) {
 
 
   $scope.test = "clientAlbum"
@@ -11,6 +11,26 @@ angular.module('app').controller('clientAlbumCtrl', function($scope, mediaServic
 
   $scope.getClientAlbum();
 
+  function getUser() {
+    signinService.getUser().then(function(user) {
+      if (user) $scope.user = user.username;
+      else   $scope.user = 'NOT LOGGED IN';
+    })
+  }
 
+  getUser();
+
+  $scope.loginLocal = function(username, password) {
+    console.log('Logging in with', username, password);
+    signinService.loginLocal({
+      username: username,
+      password: password
+    })
+    .then(function(res) {
+      getUser();
+    })
+  }
+
+  $scope.logout = signinService.logout;
 
 })

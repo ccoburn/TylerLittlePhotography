@@ -1,19 +1,26 @@
-<section class="full-background">
+<section>
+  <div class="fullscreen-bg">
+    <video loop muted autoplay poster="" class="fullscreen-bg__video">
+      <source src="./diablo.mp4" type="video/mp4">
+    </video>
+  </div>
+  <nav class="z-depth-0">
+    <div class="nav-wrapper">
+      <ul id="nav-mobile" class="hide-on-med-and-down flex-wrapper">
+        <li><a ui-sref="home">Home</a></li>
+        <li><a ui-sref="about">About</a></li>
+        <li><a ui-sref="photos">Photos<a/></li>
+        <li><a ui-sref="videos">Videos<a/></li>
+        <li><a href="/auth">signin</a></li>
+        <li><a ui-sref="adminHome">admin</a></li>
+        <li><p>Hello {{user}}</p></li>
+      </ul>
+    </div>
+  </nav>
 
-  <ul>
-    <li ui-sref="home">Home</li>
-    <li ui-sref="about">about</li>
-    <li ui-sref="contact">contact</li>
-    <li ui-sref="photos">photos</li>
-    <li ui-sref="videos">videos</li>
-    <li><a href="/auth">signin</a></li>
-    <li ui-sref="adminHome">admin</li>
-    <p class="white">Hello {{user}}</p>
-  </ul>
 
 
-
-<h1 class = 'white'>Tyler Little Photography</h1>
+<h1 class = 'site-title'>Tyler Little Photography</h1>
 
 
 </section>

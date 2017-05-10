@@ -1,4 +1,4 @@
-angular.module("app", ['ui.router'])
+angular.module("app", ['ui.router', 'ui.materialize'])
 .config(function($stateProvider, $urlRouterProvider, $sceDelegateProvider) {
 
 
@@ -65,7 +65,8 @@ angular.module("app", ['ui.router'])
     // Allow same origin resource loads.
     'self',
     // Allow loading from our assets domain. **.
-    'https://s3-us-west-2.amazonaws.com/tyler-little-photography/**'
+    'https://s3-us-west-2.amazonaws.com/tyler-little-photography/**',
+    'https://player.vimeo.com/video/**'
   ]);
 
 
