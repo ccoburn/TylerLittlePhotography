@@ -7610,7 +7610,7 @@ Picker.extend( 'pickadate', DatePicker )
         shift: 0, // spacing for center image
         padding: 0, // Padding between non center items
         fullWidth: false, // Change to full width styles
-        indicators: false, // Toggle indicators
+        indicators: true, // Toggle indicators
         noWrap: false, // Don't wrap around and cycle through items.
         onCycleTo: null // Callback for when a new slide is cycled to.
       };

@@ -2538,6 +2538,9 @@ html {
   margin: 10px;
   width: 600px; }
 
+.thumnail {
+  width: 300px; }
+
 .rounded {
   border-radius: 15px; }
 

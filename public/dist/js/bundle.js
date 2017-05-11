@@ -679,8 +679,6 @@ angular.module('app').controller('videoAlbumCtrl', function ($scope, mediaServic
 
 angular.module('app').controller('videosCtrl', function ($scope, mediaService, $stateParams, $sce, signinService) {
 
-  $scope.test = "videos";
-
   $scope.getSampleVideos = function () {
     mediaService.getSampleVideos().then(function (response) {
       $scope.videos = response;
@@ -688,6 +686,39 @@ angular.module('app').controller('videosCtrl', function ($scope, mediaService, $
   };
 
   $scope.getSampleVideos();
+
+  $scope.getMainVideo = function () {
+    mediaService.getVideoById($stateParams.id).then(function (response) {
+      $scope.mainVideo = response;
+      console.log($scope.mainVideo);
+      if ($scope.mainVideo[0].video_src === 'youtube') {
+        $scope.youtube = true;
+        $scope.vimeo = false;
+      }
+      if ($scope.mainVideo[0].video_src === 'vimeo') {
+        $scope.youtube = false;
+        $scope.vimeo = true;
+      }
+    });
+  };
+
+  $scope.getMainVideo();
+
+  $scope.getYoutube = function () {
+    mediaService.getYoutube().then(function (response) {
+      $scope.ytvideos = response;
+    });
+  };
+
+  $scope.getYoutube();
+
+  $scope.getVimeo = function () {
+    mediaService.getVimeo().then(function (response) {
+      $scope.vimvideos = response;
+    });
+  };
+
+  $scope.getVimeo();
 
   function getUser() {
     signinService.getUser().then(function (user) {
@@ -783,7 +814,28 @@ angular.module('app').service('mediaService', function ($http) {
   };
 
   this.getSampleVideos = function () {
-    return $http.get('/api/SampleVideos').then(function (response) {
+    return $http.get('/api/Videos').then(function (response) {
+      console.log(response.data);
+      return response.data;
+    });
+  };
+
+  this.getVideoById = function (id) {
+    return $http.get('/api/Video/' + id).then(function (response) {
+      console.log(response.data);
+      return response.data;
+    });
+  };
+
+  this.getYoutube = function () {
+    return $http.get('/api/VideosYoutube').then(function (response) {
+      console.log(response.data);
+      return response.data;
+    });
+  };
+
+  this.getVimeo = function () {
+    return $http.get('/api/VideosVimeo').then(function (response) {
       console.log(response.data);
       return response.data;
     });

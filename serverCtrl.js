@@ -25,6 +25,11 @@ module.exports = {
         res.status(200).send(albums)
       })
     },
+    getAllSampleAlbums: function(req, res, next) {
+      db.getAllSampleAlbums(function(err, albums) {
+        res.status(200).send(albums)
+      })
+    },
     getSampleAlbum: function(req, res, next) {
       db.getSampleAlbum([req.params.id], function(err, photos) {
         res.status(200).send(photos)
@@ -50,9 +55,20 @@ module.exports = {
         res.status(200).send(photos)
       })
     },
-    getAllSampleAlbums: function(req, res, next) {
-      db.getAllSampleAlbums(function(err, albums) {
-        res.status(200).send(albums)
+    getVideoById: function(req, res, next) {
+      db.getVideoById([req.params.id], function(err, video) {
+        res.status(200).send(video)
+
+      })
+    },
+    getYoutube: function(req, res, next) {
+      db.getYoutube(function(err, videos) {
+        res.status(200).send(videos)
+      })
+    },
+    getVimeo: function(req, res, next) {
+      db.getVimeo(function(err, videos) {
+        res.status(200).send(videos)
       })
     },
     getAllClientAlbums: function(req, res, next) {

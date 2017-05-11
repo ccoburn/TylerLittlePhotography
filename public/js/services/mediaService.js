@@ -43,7 +43,28 @@ angular.module('app').service('mediaService', function($http) {
   }
 
   this.getSampleVideos = function() {
-    return $http.get('/api/SampleVideos').then(function(response) {
+    return $http.get('/api/Videos').then(function(response) {
+      console.log(response.data);
+      return response.data;
+    })
+  }
+
+  this.getVideoById = function(id) {
+    return $http.get('/api/Video/' + id).then(function(response) {
+      console.log(response.data);
+      return response.data;
+    })
+  }
+
+  this.getYoutube = function() {
+    return $http.get('/api/VideosYoutube').then(function(response) {
+      console.log(response.data);
+      return response.data;
+    })
+  }
+
+  this.getVimeo = function() {
+    return $http.get('/api/VideosVimeo').then(function(response) {
       console.log(response.data);
       return response.data;
     })

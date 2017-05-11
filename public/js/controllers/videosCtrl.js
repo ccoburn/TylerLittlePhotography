@@ -1,8 +1,6 @@
 angular.module('app').controller('videosCtrl', function($scope, mediaService, $stateParams, $sce, signinService) {
 
 
-  $scope.test = "videos"
-
   $scope.getSampleVideos = function() {
     mediaService.getSampleVideos().then(function(response) {
       $scope.videos = response;
@@ -10,6 +8,39 @@ angular.module('app').controller('videosCtrl', function($scope, mediaService, $s
   }
 
   $scope.getSampleVideos();
+
+  $scope.getMainVideo = function() {
+    mediaService.getVideoById($stateParams.id).then(function(response) {
+      $scope.mainVideo = response;
+      console.log($scope.mainVideo);
+      if ($scope.mainVideo[0].video_src === 'youtube') {
+        $scope.youtube = true;
+        $scope.vimeo = false;
+      }
+      if ($scope.mainVideo[0].video_src === 'vimeo') {
+        $scope.youtube = false;
+        $scope.vimeo = true;
+      }
+    })
+  }
+
+  $scope.getMainVideo();
+
+  $scope.getYoutube = function() {
+    mediaService.getYoutube().then(function(response) {
+      $scope.ytvideos = response;
+    })
+  }
+
+  $scope.getYoutube();
+
+  $scope.getVimeo = function() {
+    mediaService.getVimeo().then(function(response) {
+      $scope.vimvideos = response;
+    })
+  }
+
+  $scope.getVimeo();
 
 
   function getUser() {

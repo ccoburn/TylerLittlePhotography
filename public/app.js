@@ -26,7 +26,7 @@ angular.module("app", ['ui.router', 'ui.materialize'])
     controller: 'photoAlbumCtrl'
   })
   .state('videos', {
-    url: '/videos',
+    url: '/videos/:id',
     templateUrl: './views/videos.html',
     controller: 'videosCtrl'
   })
@@ -51,7 +51,8 @@ angular.module("app", ['ui.router', 'ui.materialize'])
     'self',
     // Allow loading from our assets domain. **.
     'https://s3-us-west-2.amazonaws.com/tyler-little-photography/**',
-    'https://player.vimeo.com/video/**'
+    'https://player.vimeo.com/video/**',
+    'https://www.youtube.com/embed/**'
   ]);
 
 
