@@ -4,6 +4,19 @@
   align-items: center;
 }
 
+.flex-wrapper-left {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 200px;
+}
+.flex-wrapper-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 400px;
+}
+
 .site-title {
   color: white;
   font-size: 80px;
@@ -11,9 +24,26 @@
   text-align: center;
 }
 
+.about-text {
+  color: white;
+  font-size: 80px;
+}
+
 .full-background {
   margin-top: 0;
   width: 100%;
+  z-index: -101;
+}
+
+.zindex {
+  z-index: 5;
+}
+
+.height {
+  height: 600px;
+}
+
+.height100 {
   height: 100vh;
 }
 
@@ -30,27 +60,33 @@
   align-content: stretch;
 }
 
+.photos-container {
+  margin: 0 auto;
+  max-width: 1280px;
+  width: 75%;
+}
+
 .parallax-wedding {
-  left: 43%;
-  bottom: 250%;
+  left: 52%;
+  bottom: 32%;
   width: 2000px;
 }
 
 .parallax-couples {
   left: 60%;
-  bottom: 50%;
+  bottom: 21%;
   width: 2000px;
 }
 
 .parallax-families {
   left: 40%;
-  bottom: 8%;
+  bottom: -14%;
   width: 1900px;
 }
 
 .parallax-newborns {
   left: 60%;
-  bottom: 95%;
+  bottom: 72%;
   width: 1900px;
 }
 
@@ -58,6 +94,35 @@
   left: 40%;
   bottom: 25%;
   width: 1900px;
+}
+
+.parallax-photography {
+  left: 40%;
+  bottom: 0%;
+  width: 1900px;
+}
+
+
+.parallax-tyler {
+  left: -8%;
+  bottom: 29%;
+  width: 1000px;
+}
+
+.parallax-container2 {
+  position: relative;
+  overflow: hidden;
+  height: 400px;
+  border-radius: 50%;
+  width: 400px;
+  height: 400px;
+}
+
+.parallax-container3 {
+  position: relative;
+  overflow: hidden;
+  height: 600px;
+  margin-top: 200px;
 }
 
 .photo-box {
@@ -104,7 +169,11 @@
 }
 
 .margin-top {
-  margin-top: 50px;
+  margin-top: 75px;
+}
+
+.padding-bottom {
+  padding-bottom: 100px;
 }
 
 .fullscreen-bg {
@@ -131,8 +200,22 @@
   -moz-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+  z-index: 4;
 }
 
 .navbackground {
-  background-color: rgba(0, 0, 0, 0.3);;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.zoom img {
+  // max-width: 100%;
+
+  -moz-transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.zoom:hover img {
+  -moz-transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
 }

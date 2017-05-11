@@ -2750,8 +2750,10 @@ video.responsive-video {
 .parallax-container {
   position: relative;
   overflow: hidden;
-  height: 400px;
+  height: 500px;
 }
+
+
 
 .parallax {
   position: absolute;
@@ -2759,7 +2761,7 @@ video.responsive-video {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: -2;
+  // z-index: -2;
 }
 
 .parallax img {
@@ -2767,6 +2769,19 @@ video.responsive-video {
   position: absolute;
   // left: 50%;
   // bottom: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.parallax source {
+  display: none;
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
   min-width: 100%;
   min-height: 100%;
   -webkit-transform: translate3d(0, 0, 0);
@@ -4744,7 +4759,7 @@ small {
 .card .card-image .card-title {
   color: #fff;
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
   max-width: 100%;
   padding: 24px;
@@ -5777,18 +5792,21 @@ button.btn-floating {
 }
 
 .materialboxed {
-  // display: block;
+  display: block;
   cursor: -webkit-zoom-in;
   cursor: zoom-in;
-  // position: relative;
-  transition: .2s;
-  -webkit-backface-visibility: hidden;
+  position: relative;
+  transition: .4s;
+  // -webkit-backface-visibility: hidden;
 
 }
 
 .materialboxed:hover:not(.active) {
   // opacity: .8;
-  filter: blur(5px);
+  // animation-name: jello;
+  // animation-duration: .8s;
+  // filter: blur(5px);
+  transform: scale(0.75);
 }
 
 .materialboxed.active {

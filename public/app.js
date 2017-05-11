@@ -15,11 +15,6 @@ angular.module("app", ['ui.router', 'ui.materialize'])
     templateUrl: './views/about.html',
     controller: 'aboutCtrl'
   })
-  .state('contact', {
-    url: '/contact',
-    templateUrl: './views/contact.html',
-    controller: 'contactCtrl'
-  })
   .state('photos', {
     url: '/photos',
     templateUrl: './views/photos.html',
@@ -34,16 +29,6 @@ angular.module("app", ['ui.router', 'ui.materialize'])
     url: '/videos',
     templateUrl: './views/videos.html',
     controller: 'videosCtrl'
-  })
-  .state('videoAlbum', {
-    url: '/videoAlbum/:id',
-    templateUrl: './views/videoAlbum.html',
-    controller: 'videoAlbumCtrl'
-  })
-  .state('signin', {
-    url: '/signin',
-    templateUrl: './views/signin.html',
-    controller: 'signinCtrl'
   })
   .state('clientHome', {
     url: '/clientHome/:id',

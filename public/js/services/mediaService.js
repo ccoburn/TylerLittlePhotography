@@ -93,8 +93,8 @@ angular.module('app').service('mediaService', function($http) {
     })
   }
 
-  this.addUserToAlbum = function(userid, albumid) {
-    return $http.post('/api/addUserToAlbum', {userid: userid, albumid: albumid})
+  this.addAlbumToUser = function(userid, albumid) {
+    return $http.post('/api/addAlbumToUser', {userid: userid, albumid: albumid})
   }
 
 

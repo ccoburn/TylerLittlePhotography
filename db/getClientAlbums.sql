@@ -1,3 +1,3 @@
-select clientalbums.id, clientalbums.name, clientalbums.jobdate, clientalbums.cover, users.username from ClientAlbums
-join users on clientalbums.client = users.id
-where client = $1
+select users.id, users.username, users.album, clientalbums.name, clientalbums.jobdate, clientalbums.cover from Users
+join clientalbums on clientalbums.id = users.album
+where users.id = $1

@@ -1,22 +1,22 @@
 <div class="parallax-container z-depth-1">
   <div class="navbar-fixed">
     <nav class="z-depth-0 navbackground">
-      <div>
+      <div class="nav-wrapper">
         <ul id="nav-mobile" class="hide-on-med-and-down flex-wrapper">
           <li><a ui-sref="home">Home</a></li>
           <li><a ui-sref="about">About</a></li>
           <li><a ui-sref="photos">Photos<a/></li>
-              <li><a ui-sref="videos">Videos<a/></li>
-                <li><a href="/auth">signin</a></li>
-          <li><a ui-sref="adminHome">admin</a></li>
-          <li>
-            <p>{{user}}</p>
-          </li>
-        </ul>
-      </div>
-    </nav>
+            <li ng-show="showYourAlbums"><a ui-sref="clientHome({id:userId})">Your Albums</a></li>
+            <li><a ui-sref="videos">Videos<a/></li>
+              <li ng-hide="hideSignin"><a href="/auth">Sign-in</a></li>
+              <li ng-show="showLogout"><a ng-click="logout()">Log-out</a></li>
+              <li ng-show="showAdmin"><a ui-sref="adminHome">Admin</a></li>
+              <li><p>{{user}}</p></li>
+            </ul>
+          </div>
+        </nav>
   </div>
-  <div parallax><img class="parallax-wedding" src="https://s3-us-west-2.amazonaws.com/tyler-little-photography/DSC_1536.jpg"></div>
+  <div parallax><img class="parallax-wedding" src="https://s3-us-west-2.amazonaws.com/tyler-little-photography/DSC_2237.jpg"></div>
   <!-- <div class="flex-wrapper">
     <h1 class="white-text margin-top">{{photos[0].name}}</h1>
   </div> -->

@@ -93,7 +93,26 @@ angular.module('app').controller('aboutCtrl', function ($scope, signinService) {
 
   function getUser() {
     signinService.getUser().then(function (user) {
-      if (user) $scope.user = user.username;else $scope.user = 'NOT LOGGED IN';
+      console.log(user);
+      if (user) {
+        $scope.user = user.username;
+        $scope.userId = user.id;
+        console.log($scope.userId);
+        $scope.showLogout = true;
+        $scope.hideSignin = true;
+        if (user.admin === true) {
+          $scope.showAdmin = true;
+        }
+        if (user.album) {
+          $scope.showYourAlbums = true;
+        }
+      } else {
+        $scope.user = 'NOT LOGGED IN';
+        $scope.showLogout = false;
+        $scope.hideSignin = false;
+        $scope.showAdmin = false;
+        $scope.showYourAlbums = false;
+      }
     });
   }
 
@@ -109,11 +128,69 @@ angular.module('app').controller('aboutCtrl', function ($scope, signinService) {
     });
   };
 
-  $scope.logout = signinService.logout;
+  $scope.logout = function () {
+    signinService.logout();
+    $scope.user = 'NOT LOGGED IN';
+    $scope.showLogout = false;
+    $scope.hideSignin = false;
+    $scope.showAdmin = false;
+    $scope.showYourAlbums = false;
+  };
 });
 'use strict';
 
-angular.module('app').controller('adminHomeCtrl', function ($scope, mediaService, signinService) {
+angular.module('app').controller('adminHomeCtrl', function ($scope, mediaService, signinService, $location) {
+
+  $scope.redirect = function () {
+    $location.path('home').then($scope.alert());
+  };
+
+  $scope.alert = function () {
+    setTimeout(function () {
+      alert("Not Authorized");
+    }, 500);
+  };
+
+  function getUser() {
+    signinService.getUser().then(function (user) {
+      // if (!user.admin) {
+      //   $scope.redirect();
+      // }
+      if (user) {
+        $scope.user = user.username;
+        $scope.userId = user.id;
+        $scope.showLogout = true;
+        $scope.hideSignin = true;
+        if (user.admin === true) {
+          $scope.showAdmin = true;
+        } else {
+          $scope.redirect();
+        }
+        if (user.album) {
+          $scope.showYourAlbums = true;
+        }
+      } else {
+        $scope.redirect();
+        $scope.user = 'NOT LOGGED IN';
+        $scope.showLogout = false;
+        $scope.hideSignin = false;
+        $scope.showAdmin = false;
+        $scope.showYourAlbums = false;
+      }
+    });
+  }
+
+  getUser();
+
+  $scope.loginLocal = function (username, password) {
+    console.log('Logging in with', username, password);
+    signinService.loginLocal({
+      username: username,
+      password: password
+    }).then(function (res) {
+      getUser();
+    });
+  };
 
   $scope.getAllSampleAlbums = function () {
     mediaService.getAllSampleAlbums().then(function (response) {
@@ -142,24 +219,70 @@ angular.module('app').controller('adminHomeCtrl', function ($scope, mediaService
 
   $scope.getUserNames = function () {
     mediaService.getUserNames().then(function (response) {
-      $scope.users = response;
+      $scope.clientNames = response;
     });
   };
 
   $scope.getUserNames();
 
-  $scope.addUserToAlbum = function (user, album) {
-    var userid = $scope.user.id;
+  $scope.addAlbumToUser = function (user, album) {
+    var userid = $scope.clientName.id;
     var albumid = $scope.album.id;
-    console.log(userid, albumid);
-    mediaService.addUserToAlbum(userid, albumid).then(function (response) {
+    console.log(user, album);
+    mediaService.addAlbumToUser(userid, albumid).then(function (response) {
       return response;
     });
   };
 
+  $scope.logout = function () {
+    signinService.logout();
+    $scope.user = 'NOT LOGGED IN';
+    $scope.showLogout = false;
+    $scope.hideSignin = false;
+    $scope.showAdmin = false;
+    $scope.showYourAlbums = false;
+  };
+});
+'use strict';
+
+angular.module('app').controller('clientAlbumCtrl', function ($scope, mediaService, $stateParams, signinService, $location) {
+
+  $scope.redirect = function () {
+    $location.path('home').then($scope.alert());
+  };
+
+  $scope.alert = function () {
+    setTimeout(function () {
+      alert("Not Authorized");
+    }, 500);
+  };
+
   function getUser() {
     signinService.getUser().then(function (user) {
-      if (user) $scope.user = user.username;else $scope.user = 'NOT LOGGED IN';
+      console.log(user);
+      if (user) {
+        $scope.user = user.username;
+        $scope.userId = user.id;
+        console.log($scope.userId);
+        $scope.showLogout = true;
+        $scope.hideSignin = true;
+        // if (parseInt(user.album) !== parseInt($stateParams.id) && user.admin !== true) {
+        //   $scope.redirect();
+        // }
+        if (user.admin === true) {
+          $scope.showAdmin = true;
+        }
+        if (user.album) {
+          $scope.showYourAlbums = true;
+        }
+      } else {
+        // $scope.redirect();
+        $scope.user = 'NOT LOGGED IN';
+        $scope.showLogout = false;
+        $scope.hideSignin = false;
+        $scope.showAdmin = false;
+        $scope.showYourAlbums = false;
+      }
     });
   }
 
@@ -174,14 +297,6 @@ angular.module('app').controller('adminHomeCtrl', function ($scope, mediaService
       getUser();
     });
   };
-
-  $scope.logout = signinService.logout;
-});
-'use strict';
-
-angular.module('app').controller('clientAlbumCtrl', function ($scope, mediaService, $stateParams, signinService) {
-
-  $scope.test = "clientAlbum";
 
   $scope.getClientAlbum = function () {
     mediaService.getClientAlbum($stateParams.id).then(function (response) {
@@ -191,44 +306,56 @@ angular.module('app').controller('clientAlbumCtrl', function ($scope, mediaServi
 
   $scope.getClientAlbum();
 
-  function getUser() {
-    signinService.getUser().then(function (user) {
-      if (user) $scope.user = user.username;else $scope.user = 'NOT LOGGED IN';
-    });
-  }
-
-  getUser();
-
-  $scope.loginLocal = function (username, password) {
-    console.log('Logging in with', username, password);
-    signinService.loginLocal({
-      username: username,
-      password: password
-    }).then(function (res) {
-      getUser();
-    });
+  $scope.logout = function () {
+    signinService.logout();
+    $scope.user = 'NOT LOGGED IN';
+    $scope.showLogout = false;
+    $scope.hideSignin = false;
+    $scope.showAdmin = false;
+    $scope.showYourAlbums = false;
   };
-
-  $scope.logout = signinService.logout;
 });
 "use strict";
 'use strict';
 
-angular.module('app').controller('clientHomeCtrl', function ($scope, mediaService, $stateParams, signinService) {
+angular.module('app').controller('clientHomeCtrl', function ($scope, mediaService, $stateParams, signinService, $location) {
 
-  $scope.test = "clientHome";
-
-  $scope.getClientAlbums = function () {
-    mediaService.getClientAlbums($stateParams.id).then(function (response) {
-      $scope.albums = response;
-    });
+  $scope.redirect = function () {
+    $location.path('home').then($scope.alert());
   };
 
-  $scope.getClientAlbums();
+  $scope.alert = function () {
+    setTimeout(function () {
+      alert("Not Authorized");
+    }, 500);
+  };
 
   function getUser() {
     signinService.getUser().then(function (user) {
-      if (user) $scope.user = user.username;else $scope.user = 'NOT LOGGED IN';
+      console.log(user);
+      if (user) {
+        $scope.user = user.username;
+        $scope.userId = user.id;
+        console.log($scope.userId);
+        $scope.showLogout = true;
+        $scope.hideSignin = true;
+        // if (parseInt(user.id) !== parseInt($stateParams.id) && user.admin !== true) {
+        //   $scope.redirect();
+        // }
+        if (user.admin === true) {
+          $scope.showAdmin = true;
+        }
+        if (user.album) {
+          $scope.showYourAlbums = true;
+        }
+      } else {
+        // $scope.redirect();
+        $scope.user = 'NOT LOGGED IN';
+        $scope.showLogout = false;
+        $scope.hideSignin = false;
+        $scope.showAdmin = false;
+        $scope.showYourAlbums = false;
+      }
     });
   }
 
@@ -244,7 +371,23 @@ angular.module('app').controller('clientHomeCtrl', function ($scope, mediaServic
     });
   };
 
-  $scope.logout = signinService.logout;
+  $scope.logout = function () {
+    signinService.logout();
+    $scope.user = 'NOT LOGGED IN';
+    $scope.showLogout = false;
+    $scope.hideSignin = false;
+    $scope.showAdmin = false;
+    $scope.showYourAlbums = false;
+  };
+
+  $scope.getClientAlbums = function () {
+    mediaService.getClientAlbums($stateParams.id).then(function (response) {
+      $scope.albums = response;
+      console.log($scope.albums);
+    });
+  };
+
+  $scope.getClientAlbums();
 });
 'use strict';
 
@@ -256,17 +399,36 @@ angular.module('app').controller('contactCtrl', function ($scope) {
 
 angular.module('app').controller('mainCtrl', function ($scope, mediaService, signinService) {
 
-  $scope.getMedia = function () {
-    mediaService.getMedia().then(function (response) {
-      $scope.media = response;
-    });
-  };
-
-  $scope.getMedia();
+  // $scope.getMedia = function() {
+  //   mediaService.getMedia().then(function(response) {
+  //     $scope.media = response;
+  //   })
+  // }
+  //
+  // $scope.getMedia();
 
   function getUser() {
     signinService.getUser().then(function (user) {
-      if (user) $scope.user = user.username;else $scope.user = 'NOT LOGGED IN';
+      console.log(user);
+      if (user) {
+        $scope.user = user.username;
+        $scope.userId = user.id;
+        console.log($scope.userId);
+        $scope.showLogout = true;
+        $scope.hideSignin = true;
+        if (user.admin === true) {
+          $scope.showAdmin = true;
+        }
+        if (user.album) {
+          $scope.showYourAlbums = true;
+        }
+      } else {
+        $scope.user = 'NOT LOGGED IN';
+        $scope.showLogout = false;
+        $scope.hideSignin = false;
+        $scope.showAdmin = false;
+        $scope.showYourAlbums = false;
+      }
     });
   }
 
@@ -282,7 +444,14 @@ angular.module('app').controller('mainCtrl', function ($scope, mediaService, sig
     });
   };
 
-  $scope.logout = signinService.logout;
+  $scope.logout = function () {
+    signinService.logout();
+    $scope.user = 'NOT LOGGED IN';
+    $scope.showLogout = false;
+    $scope.hideSignin = false;
+    $scope.showAdmin = false;
+    $scope.showYourAlbums = false;
+  };
 });
 'use strict';
 
@@ -336,7 +505,26 @@ angular.module('app').controller('photoAlbumCtrl', function ($scope, mediaServic
 
   function getUser() {
     signinService.getUser().then(function (user) {
-      if (user) $scope.user = user.username;else $scope.user = 'NOT LOGGED IN';
+      console.log(user);
+      if (user) {
+        $scope.user = user.username;
+        $scope.userId = user.id;
+        console.log($scope.userId);
+        $scope.showLogout = true;
+        $scope.hideSignin = true;
+        if (user.admin === true) {
+          $scope.showAdmin = true;
+        }
+        if (user.album) {
+          $scope.showYourAlbums = true;
+        }
+      } else {
+        $scope.user = 'NOT LOGGED IN';
+        $scope.showLogout = false;
+        $scope.hideSignin = false;
+        $scope.showAdmin = false;
+        $scope.showYourAlbums = false;
+      }
     });
   }
 
@@ -352,7 +540,14 @@ angular.module('app').controller('photoAlbumCtrl', function ($scope, mediaServic
     });
   };
 
-  $scope.logout = signinService.logout;
+  $scope.logout = function () {
+    signinService.logout();
+    $scope.user = 'NOT LOGGED IN';
+    $scope.showLogout = false;
+    $scope.hideSignin = false;
+    $scope.showAdmin = false;
+    $scope.showYourAlbums = false;
+  };
 });
 'use strict';
 
@@ -374,6 +569,31 @@ angular.module('app').controller('photosCtrl', function ($scope, mediaService, s
     });
   }
 
+  function getUser() {
+    signinService.getUser().then(function (user) {
+      console.log(user);
+      if (user) {
+        $scope.user = user.username;
+        $scope.userId = user.id;
+        console.log($scope.userId);
+        $scope.showLogout = true;
+        $scope.hideSignin = true;
+        if (user.admin === true) {
+          $scope.showAdmin = true;
+        }
+        if (user.album) {
+          $scope.showYourAlbums = true;
+        }
+      } else {
+        $scope.user = 'NOT LOGGED IN';
+        $scope.showLogout = false;
+        $scope.hideSignin = false;
+        $scope.showAdmin = false;
+        $scope.showYourAlbums = false;
+      }
+    });
+  }
+
   getUser();
 
   $scope.loginLocal = function (username, password) {
@@ -386,7 +606,14 @@ angular.module('app').controller('photosCtrl', function ($scope, mediaService, s
     });
   };
 
-  $scope.logout = signinService.logout;
+  $scope.logout = function () {
+    signinService.logout();
+    $scope.user = 'NOT LOGGED IN';
+    $scope.showLogout = false;
+    $scope.hideSignin = false;
+    $scope.showAdmin = false;
+    $scope.showYourAlbums = false;
+  };
 });
 "use strict";
 'use strict';
@@ -464,7 +691,26 @@ angular.module('app').controller('videosCtrl', function ($scope, mediaService, $
 
   function getUser() {
     signinService.getUser().then(function (user) {
-      if (user) $scope.user = user.username;else $scope.user = 'NOT LOGGED IN';
+      console.log(user);
+      if (user) {
+        $scope.user = user.username;
+        $scope.userId = user.id;
+        console.log($scope.userId);
+        $scope.showLogout = true;
+        $scope.hideSignin = true;
+        if (user.admin === true) {
+          $scope.showAdmin = true;
+        }
+        if (user.album) {
+          $scope.showYourAlbums = true;
+        }
+      } else {
+        $scope.user = 'NOT LOGGED IN';
+        $scope.showLogout = false;
+        $scope.hideSignin = false;
+        $scope.showAdmin = false;
+        $scope.showYourAlbums = false;
+      }
     });
   }
 
@@ -480,7 +726,14 @@ angular.module('app').controller('videosCtrl', function ($scope, mediaService, $
     });
   };
 
-  $scope.logout = signinService.logout;
+  $scope.logout = function () {
+    signinService.logout();
+    $scope.user = 'NOT LOGGED IN';
+    $scope.showLogout = false;
+    $scope.hideSignin = false;
+    $scope.showAdmin = false;
+    $scope.showYourAlbums = false;
+  };
 });
 "use strict";
 'use strict';
@@ -580,8 +833,8 @@ angular.module('app').service('mediaService', function ($http) {
     });
   };
 
-  this.addUserToAlbum = function (userid, albumid) {
-    return $http.post('/api/addUserToAlbum', { userid: userid, albumid: albumid });
+  this.addAlbumToUser = function (userid, albumid) {
+    return $http.post('/api/addAlbumToUser', { userid: userid, albumid: albumid });
   };
 });
 'use strict';

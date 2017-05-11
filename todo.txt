@@ -1,0 +1,31 @@
+Login
+  - style screen
+  -make admin and clientHome/Album check
+
+
+home
+  - Add tyler's new video background-color
+  - Find font for title
+  - media queries for background
+  - menu for smaller screens
+  - capitalization in nav for all views
+about
+  - facebook and other Icons
+  - media queries
+photos
+  - media queries
+photo album
+  - media queries for parallax
+  - menu to change albums?
+videos
+  - create views by id with large video and smaller videos links under
+  - media queries
+client home
+  - have angele log in, assign album to her
+  - style site
+client album
+  -style site similar to photo album
+adminHome
+  - add functions to modals
+  - style
+  - test functions

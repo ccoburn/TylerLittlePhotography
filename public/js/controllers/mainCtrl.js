@@ -1,22 +1,42 @@
 angular.module('app').controller('mainCtrl', function($scope, mediaService, signinService) {
 
 
-  $scope.getMedia = function() {
-    mediaService.getMedia().then(function(response) {
-      $scope.media = response;
-    })
-  }
-
-  $scope.getMedia();
+  // $scope.getMedia = function() {
+  //   mediaService.getMedia().then(function(response) {
+  //     $scope.media = response;
+  //   })
+  // }
+  //
+  // $scope.getMedia();
 
   function getUser() {
     signinService.getUser().then(function(user) {
-      if (user) $scope.user = user.username;
-      else   $scope.user = 'NOT LOGGED IN';
+      console.log(user);
+      if (user) {
+        $scope.user = user.username;
+        $scope.userId = user.id;
+        console.log($scope.userId);
+        $scope.showLogout = true;
+        $scope.hideSignin = true;
+        if (user.admin === true) {
+          $scope.showAdmin = true
+        }
+        if (user.album) {
+          $scope.showYourAlbums = true;
+        }
+
+      } else {
+      $scope.user = 'NOT LOGGED IN';
+      $scope.showLogout = false;
+      $scope.hideSignin = false;
+      $scope.showAdmin = false;
+      $scope.showYourAlbums = false;
+    }
     })
   }
 
   getUser();
+
 
   $scope.loginLocal = function(username, password) {
     console.log('Logging in with', username, password);
@@ -29,7 +49,14 @@ angular.module('app').controller('mainCtrl', function($scope, mediaService, sign
     })
   }
 
-  $scope.logout = signinService.logout;
+  $scope.logout = function() {
+    signinService.logout();
+    $scope.user = 'NOT LOGGED IN';
+    $scope.showLogout = false;
+    $scope.hideSignin = false;
+    $scope.showAdmin = false;
+    $scope.showYourAlbums = false;
+  }
 
 
 })

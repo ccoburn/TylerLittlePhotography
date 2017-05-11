@@ -97,8 +97,8 @@ module.exports = {
         res.status(200).send(names)
       })
     },
-    addUserToAlbum: function(req, res, next) {
-      db.addUserToAlbum([req.body.userid, req.body.albumid], function(err, updated) {
+    addAlbumToUser: function(req, res, next) {
+      db.addAlbumToUser([req.body.userid, req.body.albumid], function(err, updated) {
         res.status(200).send(updated)
       })
     }

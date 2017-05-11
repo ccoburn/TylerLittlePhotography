@@ -107,7 +107,7 @@ app.get('/api/AllClientAlbums', serverCtrl.getAllClientAlbums)
 app.post('/api/AddAlbum', serverCtrl.addAlbum)
 // get user names and post to update users id to client album
 app.get('/api/UserNames', serverCtrl.getUserNames)
-app.post('/api/addUserToAlbum', serverCtrl.addUserToAlbum)
+app.post('/api/addAlbumToUser', serverCtrl.addAlbumToUser)
 // post to insert media and integrate with S3
 app.post('/api/uploadImage', serverCtrl.uploadImage)
 app.post('/api/addMedia', serverCtrl.addMedia)

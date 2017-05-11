@@ -4,9 +4,11 @@
       <li><a ui-sref="home">Home</a></li>
       <li><a ui-sref="about">About</a></li>
       <li><a ui-sref="photos">Photos<a/></li>
+      <li ng-show="showYourAlbums"><a ui-sref="clientHome({id:userId})">Your Albums</a></li>
       <li><a ui-sref="videos">Videos<a/></li>
-      <li><a href="/auth">signin</a></li>
-      <li><a ui-sref="adminHome">admin</a></li>
+      <li ng-hide="hideSignin"><a href="/auth">Sign-in</a></li>
+      <li ng-show="showLogout"><a ng-click="logout()">Log-out</a></li>
+      <li ng-show="showAdmin"><a ui-sref="adminHome">Admin</a></li>
       <li><p>{{user}}</p></li>
     </ul>
   </div>
@@ -46,17 +48,15 @@
       </div>
       <div class="row">
         <div input-field class="input-field col s4">
-          <select class="" ng-model="sample" material-select watch>
+          <select class="" ng-options="album as album.name for album in sampleAlbums track by album.id" ng-model="sample" material-select watch>
       <option value="" disabled selected>None</option>
-      <option ng-repeat="album in sampleAlbums">{{album.name}}</option>
     </select>
           <label>Sample Album</label>
         </div>
 
         <div input-field class="input-field col s4">
-          <select class="" ng-model="client" material-select watch>
+          <select class=""  ng-options="album as album.name for album in clientAlbums track by album.id" ng-model="client" material-select watch>
       <option value="" disabled selected>None</option>
-      <option ng-repeat="album in clientAlbums">{{album.name}}</option>
     </select>
           <label>Client Album</label>
         </div>
@@ -79,25 +79,24 @@
   <div class="divider"></div>
 
   <div class="section">
-    <h2>Assign user to client album</h2>
+    <h2>Assign client album to user</h2>
     <form class="" action="index.html" method="post">
       <div class="row">
-        <div input-field class="input-field col s4">
-          <select class="" ng-model="album" material-select watch>
+        <div class="input-field col s4">
+          <select class="" ng-options="album as album.name for album in clientAlbums track by album.id" ng-model="album" material-select watch>
         <option value="" disabled selected>None</option>
-        <option ng-repeat="album in clientAlbums">{{album.name}}</option>
       </select>
           <label>Client Album</label>
         </div>
-        <div input-field class="input-field col s4">
-          <select class="" ng-model="user" material-select watch>
+        <div class="input-field col s4">
+          <select class="" ng-options="client as client.username for client in clientNames track by client.username" ng-model="clientName" material-select watch>
         <option value="" disabled selected>None</option>
-        <option ng-repeat="user in users">{{user.username}}</option>
+
       </select>
           <label>Client</label>
         </div>
       </div>
-      <a class="waves-effect waves-light btn" ng-click="addUserToAlbum(user, album)"><i class="material-icons right">contacts</i>Assign</a>
+      <a class="waves-effect waves-light btn" ng-click="addAlbumToUser(clientName, album)"><i class="material-icons right">contacts</i>Assign</a>
     </form>
   </div>
 
