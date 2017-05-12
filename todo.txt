@@ -2,12 +2,13 @@ Login
   - style screen
 
 home
-  - Add tyler's new video background-color
+  - Add tyler's new video background video
   - Find font for title
   - media queries for background
   - menu for smaller screens
 about
   - facebook and other Icons
+  - finish
   - media queries
 photos
   - media queries
@@ -15,11 +16,8 @@ photo album
   - media queries for parallax
   - menu to change albums?
 videos
-  - reformat database
-  - create views by id with large video and smaller videos links under
   - media queries
 client home
-  - have angele log in, assign album to her
   - Media queries, finishing touches
 client album
   - Media queries, finishing touches

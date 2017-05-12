@@ -1,49 +1,73 @@
 <div class="grey darken-2">
 
-<nav class="navbackground">
-  <div class="nav-wrapper">
-    <ul id="nav-mobile" class="hide-on-med-and-down flex-wrapper">
-      <li><a ui-sref="home">Home</a></li>
-      <li><a ui-sref="about">About</a></li>
-      <li><a ui-sref="photos">Photos<a/></li>
-      <li ng-show="showYourAlbums"><a ui-sref="clientHome({id:userId})">Your Albums</a></li>
-      <li><a ui-sref="videos">Videos<a/></li>
-      <li ng-hide="hideSignin"><a href="/auth">Sign-in</a></li>
-      <li ng-show="showLogout"><a ng-click="logout()">Log-out</a></li>
-      <li ng-show="showAdmin"><a ui-sref="adminHome">Admin</a></li>
-      <li><p>{{user}}</p></li>
-    </ul>
+  <div class="video-container margin-bottom z-depth-3" ng-show="vimeo">
+    <div class="navbar-fixed">
+      <nav class="navbackground">
+        <div class="nav-wrapper">
+          <ul id="nav-mobile" class="hide-on-med-and-down flex-wrapper">
+            <li><a ui-sref="home">Home</a></li>
+            <li><a ui-sref="about">About</a></li>
+            <li><a ui-sref="photos">Photos<a/></li>
+        <li ng-show="showYourAlbums"><a ui-sref="clientHome({id:userId})">Your Albums</a></li>
+            <li><a ui-sref="videos({id:134})">Videos<a/></li>
+        <li ng-hide="hideSignin"><a href="/auth">Sign-in</a></li>
+            <li ng-show="showLogout"><a ng-click="logout()">Log-out</a></li>
+            <li ng-show="showAdmin"><a ui-sref="adminHome">Admin</a></li>
+            <li>
+              <p>{{user}}</p>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <iframe src="{{mainVideo[0].url}}" width="1280" height="720" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
   </div>
-</nav>
-
-
-<h1>Videos</h1>
-
-<br>
-<br>
-<div class="video-container" ng-show="vimeo">
-  <iframe src="{{mainVideo[0].url}}" width="1280" height="720" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-</div>
-<div class="video-container" ng-show="youtube">
-  <iframe width="1280" height="720" src="{{mainVideo[0].url}}" frameborder="0" allowfullscreen></iframe>
-</div>
-
-<div carousel indicators=true class="carousel">
-    <a class="carousel-item" href="javascript:void(0);"><img ng-src="{{videos[0].video_img}}" ui-sref="videos({id:videos[0].id})"></a>
-    <a class="carousel-item" href="javascript:void(0);" ><img ng-src="{{videos[1].video_img}}" ui-sref="videos({id:videos[1].id})"></a>
-    <a class="carousel-item" href="javascript:void(0);" ><img ng-src="{{videos[2].video_img}}" ui-sref="videos({id:videos[2].id})"></a>
-    <a class="carousel-item" href="javascript:void(0);"><img ng-src="{{videos[3].video_img}}" ui-sref="videos({id:videos[3].id})"></a>
-    <a class="carousel-item" href="javascript:void(0);" ><img ng-src="{{videos[4].video_img}}" ui-sref="videos({id:videos[4].id})"></a>
-
+  <div class="video-container margin-bottom z-depth-3" ng-show="youtube">
+    <div class="navbar-fixed">
+      <nav class="navbackground">
+        <div class="nav-wrapper">
+          <ul id="nav-mobile" class="hide-on-med-and-down flex-wrapper">
+            <li><a ui-sref="home">Home</a></li>
+            <li><a ui-sref="about">About</a></li>
+            <li><a ui-sref="photos">Photos<a/></li>
+        <li ng-show="showYourAlbums"><a ui-sref="clientHome({id:userId})">Your Albums</a></li>
+            <li><a ui-sref="videos">Videos<a/></li>
+        <li ng-hide="hideSignin"><a href="/auth">Sign-in</a></li>
+            <li ng-show="showLogout"><a ng-click="logout()">Log-out</a></li>
+            <li ng-show="showAdmin"><a ui-sref="adminHome">Admin</a></li>
+            <li>
+              <p>{{user}}</p>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <iframe width="1280" height="720" src="{{mainVideo[0].url}}" frameborder="0" allowfullscreen></iframe>
   </div>
+  <div class="container">
 
-<div class="" ng-repeat="video in videos">
-  <img class="responsive-img thumnail" ng-src="{{video.video_img}}" alt="" ui-sref="videos({id: {{video.id}}})">
+  <div carousel dist="-25" class="carousel">
+    <a class="carousel-item" href="javascript:void(0);"><img ng-src="{{videos[0].video_img}}"><div class="flex-wrapper relative1"><div ui-sref="videos({id:videos[0].id})" class="btn-floating btn-large waves-effect waves-light grey darken-4 play-button"><i class="large material-icons">play_arrow</i></div></div></a>
+    <a class="carousel-item" href="javascript:void(0);"><img ng-src="{{videos[1].video_img}}"><div class="flex-wrapper relative1"><div ui-sref="videos({id:videos[1].id})" class="btn-floating btn-large waves-effect waves-light grey darken-4 play-button"><i class="large material-icons">play_arrow</i></div></div></a>
+    <a class="carousel-item" href="javascript:void(0);"><img ng-src="{{videos[2].video_img}}"><div class="flex-wrapper relative1"><div ui-sref="videos({id:videos[2].id})" class="btn-floating btn-large waves-effect waves-light grey darken-4 play-button"><i class="large material-icons">play_arrow</i></div></div></a>
+    <a class="carousel-item" href="javascript:void(0);"><img ng-src="{{videos[3].video_img}}"><div class="flex-wrapper relative1"><div ui-sref="videos({id:videos[3].id})" class="btn-floating btn-large waves-effect waves-light grey darken-4 play-button"><i class="large material-icons">play_arrow</i></div></div></a>
+    <a class="carousel-item" href="javascript:void(0);"><img ng-src="{{videos[4].video_img}}"><div class="flex-wrapper relative1"><div ui-sref="videos({id:videos[4].id})" class="btn-floating btn-large waves-effect waves-light grey darken-4 play-button"><i class="large material-icons">play_arrow</i></div></div></a>
+    <a class="carousel-item" href="javascript:void(0);"><img ng-src="{{videos[5].video_img}}"><div class="flex-wrapper relative1"><div ui-sref="videos({id:videos[5].id})" class="btn-floating btn-large waves-effect waves-light grey darken-4 play-button"><i class="large material-icons">play_arrow</i></div></div></a>
+    <a class="carousel-item" href="javascript:void(0);"><img ng-src="{{videos[6].video_img}}"><div class="flex-wrapper relative1"><div ui-sref="videos({id:videos[6].id})" class="btn-floating btn-large waves-effect waves-light grey darken-4 play-button"><i class="large material-icons">play_arrow</i></div></div></a>
+    <a class="carousel-item" href="javascript:void(0);"><img ng-src="{{videos[7].video_img}}"><div class="flex-wrapper relative1"><div ui-sref="videos({id:videos[7].id})" class="btn-floating btn-large waves-effect waves-light grey darken-4 play-button"><i class="large material-icons">play_arrow</i></div></div></a>
+    <a class="carousel-item" href="javascript:void(0);"><img ng-src="{{videos[8].video_img}}"><div class="flex-wrapper relative1"><div ui-sref="videos({id:videos[8].id})" class="btn-floating btn-large waves-effect waves-light grey darken-4 play-button"><i class="large material-icons">play_arrow</i></div></div></a>
+    <a class="carousel-item" href="javascript:void(0);"><img ng-src="{{videos[9].video_img}}"><div class="flex-wrapper relative1"><div ui-sref="videos({id:videos[9].id})" class="btn-floating btn-large waves-effect waves-light grey darken-4 play-button"><i class="large material-icons">play_arrow</i></div></div></a>
+    <a class="carousel-item" href="javascript:void(0);"><img ng-src="{{videos[10].video_img}}"><div class="flex-wrapper relative1"><div ui-sref="videos({id:videos[10].id})" class="btn-floating btn-large waves-effect waves-light grey darken-4 play-button"><i class="large material-icons">play_arrow</i></div></div></a>
+  </div>
 </div>
 
+  <!-- <div class="" ng-repeat="video in videos">
+    <img class="responsive-img thumnail" ng-src="{{video.video_img}}" alt="" ui-sref="videos({id: {{video.id}}})">
+  </div> -->
 
 
-<!-- <div ng-repeat="video in vimvideos">
+
+  <!-- <div ng-repeat="video in vimvideos">
   <iframe src="{{video.url}}" width="560" height="315" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 </div>
 
@@ -52,5 +76,5 @@
 </div> -->
 
 
-
+│
 </div>
