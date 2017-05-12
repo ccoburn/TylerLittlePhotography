@@ -3,6 +3,7 @@ CREATE TABLE Users (
   username varchar(100),
   authid varchar(100),
   Admin boolean
+  album integer references clientalbums(id)
 );
 
 INSERT into Users (username, authid, admin)
@@ -13,7 +14,6 @@ CREATE TABLE ClientAlbums (
   Name varchar(40),
   JobDate date,
   cover varchar(500),
-  Client integer references Users(id)
 );
 
 insert into ClientAlbums (Name, JobDate, cover)

@@ -8,7 +8,7 @@ const Auth0Strategy = require('passport-auth0');
 const config = require('./config');
 
 var conn = massive.connectSync({
-  connectionString : "postgres://postgres:" + config.postgresPass + "@localhost/tyler_little"
+  connectionString : config.postgresPass
 });
 
 
