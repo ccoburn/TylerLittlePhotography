@@ -7,6 +7,13 @@
   align-items: center;
 }
 
+.flex-wrapper-column-to-row {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+}
+
 .flex-wrapper-left {
   display: flex;
   justify-content: flex-start;
@@ -22,21 +29,56 @@
 
 .site-title {
   color: white;
-  font-size: 80px;
-  margin-top: 135px;
+  font-size: 35px;
+  margin-top: 30px;
   text-align: center;
   font-family: 'Dosis', sans-serif;
   font-weight: 200;
 }
 
 .about-text {
-  color: white;
-  font-size: 80px;
+  color: floralwhite;
+  font-size: 30px;
+  padding: 15px;
+  border-radius: 5px;
+  position: relative;
+  top: -60;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+}
+
+.about-text2 {
+  color: floralwhite;
+  font-size: 44px;
+  padding: 15px;
+  border-radius: 5px;
+  position: relative;
+  top: 240;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+}
+
+.about-text3 {
+  color: floralwhite;
+  font-size: 44px;
+  padding: 15px;
+  border-radius: 5px;
+  position: relative;
+  top: -60;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
 }
 
 .full-background {
   margin-top: 0;
   width: 100%;
+  z-index: -101;
+}
+
+.home-background {
+  background: url('https://s3-us-west-2.amazonaws.com/tyler-little-photography/DSC_0668.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-top: 0;
+  width: 100%;
+  height: 100vh;
   z-index: -101;
 }
 
@@ -102,32 +144,42 @@
 }
 
 .parallax-photography {
-  left: 40%;
-  bottom: 0%;
-  width: 1900px;
+  left: 1%;
+  bottom: 10%;
+  width: 800px;
 }
 
+.parallax-video {
+  left: 46%;
+  bottom: 3%;
+  width: 800px;
+}
 
 .parallax-tyler {
-  left: -8%;
-  bottom: 29%;
-  width: 1000px;
+  left: -16%;
+  bottom: 35%;
+  width: 820px;
+}
+
+.hide-video {
+  display: none;
 }
 
 .parallax-container2 {
   position: relative;
   overflow: hidden;
-  height: 400px;
   border-radius: 50%;
-  width: 400px;
-  height: 400px;
+  width: 290px;
+  height: 290px;
 }
 
 .parallax-container3 {
   position: relative;
   overflow: hidden;
-  height: 600px;
-  margin-top: 200px;
+  height: 360px;
+  margin-top: 100px;
+  margin-bottom: 100px;
+
 }
 
 .photo-box {
@@ -194,7 +246,7 @@
 }
 
 .margin-top {
-  margin-top: 75px;
+  margin-top: 50px;
 }
 
 .margin-bottom {
@@ -206,30 +258,12 @@
 }
 
 .fullscreen-bg {
-  padding-top: 20px;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  overflow: hidden;
-  z-index: -100;
+  // padding-top: 20px;
+  display: none;
 }
 
 .fullscreen-bg__video {
-  padding-top: 20px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: auto;
-  height: auto;
-  min-width: 100%;
-  min-height: 100%;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  z-index: 4;
+  display: none;
 }
 
 .navbackground {
@@ -247,4 +281,175 @@
   -moz-transform: scale(1.1);
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
+}
+
+nav ul a {
+  font-size: 1rem;
+}
+
+@media(min-width: 400px) {
+  .parallax-container3 {
+    height: 400px;
+  }
+  .parallax-photography {
+    left: -26%;
+    bottom: -13%;
+    width: 1313px;
+  }
+  .about-text2 {
+    top: 280;
+  }
+
+}
+
+@media(min-width: 500px) {
+  .parallax-photography {
+    left: -8%;
+  }
+}
+
+@media(min-width: 600px) {
+  .parallax-photography {
+    left: 15%;
+  }
+}
+
+
+@media(min-width: 700px) {
+  .site-title {
+    font-size: 50px;
+  }
+  .home-background {
+    background: none;
+  }
+  .fullscreen-bg {
+    display: block;
+    // padding-top: 20px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: -100;
+  }
+  .fullscreen-bg__video {
+    display: block;
+    padding-top: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: auto;
+    height: auto;
+    min-width: 100%;
+    min-height: 100%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    z-index: 4;
+  }
+  .about-text {
+    font-size: 60px;
+  }
+  .about-text3 {
+    font-size: 60px;
+    top: 113;
+  }
+  .about-text2 {
+    color: floralwhite;
+    font-size: 60px;
+    top: 346;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  .parallax-container2 {
+    width: 400px;
+    height: 400px;
+  }
+  .margin-top {
+    margin-top: 75px;
+  }
+  .parallax-tyler {
+    left: -8%;
+    bottom: 29%;
+    width: 1000px;
+  }
+  .parallax-container3 {
+    height: 500px;
+    margin-top: 210px;
+  }
+  .parallax-photography {
+    left: 20%;
+    bottom: -8%;
+    width: 1469px;
+  }
+  .hide-video {
+    display: block;
+  }
+  .show-video {
+    display: none;
+  }
+
+}
+
+@media(min-width: 900px) {
+  .parallax-photography {
+    left: 34%;
+  }
+}
+
+
+@media(min-width: 1100px) {
+  .site-title {
+    font-size: 85px;
+    margin-top: 135px;
+  }
+  .about-text {
+    font-size: 80px;
+    box-shadow: none;
+    top: 0;
+  }
+  .about-text3 {
+    font-size: 80px;
+    box-shadow: none;
+    top: 0;
+    right: -200;
+  }
+  .about-text2 {
+    font-size: 90px;
+    top: 183;
+    left: -235;
+    background-color: rgba(0, 0, 0, 0.0);
+    box-shadow: none;
+  }
+  .flex-wrapper-column-to-row {
+    flex-direction: row;
+  }
+  .parallax-container3 {
+    height: 600px;
+  }
+  .parallax-tyler {
+    bottom: 35%;
+  }
+  .parallax-photography {
+    left: 35%;
+    bottom: -8%;
+    width: 2000px;
+  }
+
+
+}
+
+@media(min-width: 1500px) {
+  .parallax-photography {
+    left: 50%;
+  }
+
+}
+
+@media(min-width: 2000px) {
+  nav ul a {
+    font-size: 1.5rem;
+  }
+
 }

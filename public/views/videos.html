@@ -1,47 +1,37 @@
 <div class="grey darken-2">
 
-  <div class="video-container margin-bottom z-depth-3" ng-show="vimeo">
-    <div class="navbar-fixed">
-      <nav class="navbackground">
-        <div class="nav-wrapper">
-          <ul id="nav-mobile" class="hide-on-med-and-down flex-wrapper">
-            <li><a ui-sref="home">Home</a></li>
-            <li><a ui-sref="about">About</a></li>
-            <li><a ui-sref="photos">Photos<a/></li>
+
+  <nav class="z-depth-0">
+    <div class="nav-wrapper">
+      <a href="#" data-activates="mobile-nav" class="button-collapse" data-activates="nav-mobile" data-sidenav="left" data-menuwidth="200" data-closeonclick="true"><i class="material-icons">menu</i></a>
+      <ul id="nav-mobile" class="hide-on-med-and-down flex-wrapper">
+        <li><a ui-sref="home">Home</a></li>
+        <li><a ui-sref="about">About</a></li>
+        <li><a ui-sref="photos">Photos<a/></li>
         <li ng-show="showYourAlbums"><a ui-sref="clientHome({id:userId})">Your Albums</a></li>
-            <li><a ui-sref="videos({id:130})">Videos<a/></li>
+        <li><a ui-sref="videos({id:130})">Videos<a/></li>
         <li ng-hide="hideSignin"><a href="/auth">Sign-in</a></li>
-            <li ng-show="showLogout"><a ng-click="logout()">Log-out</a></li>
-            <li ng-show="showAdmin"><a ui-sref="adminHome">Admin</a></li>
-            <li>
-              <p>{{user}}</p>
-            </li>
-          </ul>
-        </div>
-      </nav>
+        <li ng-show="showLogout"><a ng-click="logout()">Log-out</a></li>
+        <li ng-show="showAdmin"><a ui-sref="adminHome">Admin</a></li>
+        <li><p>{{user}}</p></li>
+      </ul>
+      <ul class="side-nav blue lighten-5 white-text" id="mobile-nav">
+        <li><a ui-sref="home">Home</a></li>
+        <li><a ui-sref="about">About</a></li>
+        <li><a ui-sref="photos">Photos</a></li>
+        <li><a ui-sref="videos({id:130})">Videos</a></li>
+        <li ng-show="showYourAlbums"><a ui-sref="clientHome({id:userId})">Your Albums</a></li>
+        <li ng-hide="hideSignin"><a href="/auth">Sign-in</a></li>
+        <li ng-show="showLogout"><a ng-click="logout()">Log-out</a></li>
+        <li ng-show="showAdmin"><a ui-sref="adminHome">Admin</a></li>
+        <li><p class="white-text">{{user}}</p></li>
+      </ul>
     </div>
+  </nav>
+  <div class="video-container margin-bottom z-depth-3" ng-show="vimeo">
     <iframe src="{{mainVideo[0].url}}" width="1280" height="720" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
   </div>
-  <div class="video-container margin-bottom z-depth-3" ng-show="youtube">
-    <div class="navbar-fixed">
-      <nav class="navbackground">
-        <div class="nav-wrapper">
-          <ul id="nav-mobile" class="hide-on-med-and-down flex-wrapper">
-            <li><a ui-sref="home">Home</a></li>
-            <li><a ui-sref="about">About</a></li>
-            <li><a ui-sref="photos">Photos<a/></li>
-        <li ng-show="showYourAlbums"><a ui-sref="clientHome({id:userId})">Your Albums</a></li>
-            <li><a ui-sref="videos">Videos<a/></li>
-        <li ng-hide="hideSignin"><a href="/auth">Sign-in</a></li>
-            <li ng-show="showLogout"><a ng-click="logout()">Log-out</a></li>
-            <li ng-show="showAdmin"><a ui-sref="adminHome">Admin</a></li>
-            <li>
-              <p>{{user}}</p>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </div>
+    <div class="video-container margin-bottom z-depth-3" ng-show="youtube">
     <iframe width="1280" height="720" src="{{mainVideo[0].url}}" frameborder="0" allowfullscreen></iframe>
   </div>
   <div class="container">

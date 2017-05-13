@@ -2,6 +2,7 @@
 
   <nav class="navbackground">
     <div class="nav-wrapper">
+      <a href="#" data-activates="mobile-nav" class="button-collapse" data-activates="nav-mobile" data-sidenav="left" data-menuwidth="200" data-closeonclick="true"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="hide-on-med-and-down flex-wrapper">
         <li><a ui-sref="home">Home</a></li>
         <li><a ui-sref="about">About</a></li>
@@ -13,17 +14,28 @@
         <li ng-show="showAdmin"><a ui-sref="adminHome">Admin</a></li>
         <li><p>{{user}}</p></li>
       </ul>
+      <ul class="side-nav blue lighten-5 white-text" id="mobile-nav">
+        <li><a ui-sref="home">Home</a></li>
+        <li><a ui-sref="about">About</a></li>
+        <li><a ui-sref="photos">Photos</a></li>
+        <li><a ui-sref="videos({id:130})">Videos</a></li>
+        <li ng-show="showYourAlbums"><a ui-sref="clientHome({id:userId})">Your Albums</a></li>
+        <li ng-hide="hideSignin"><a href="/auth">Sign-in</a></li>
+        <li ng-show="showLogout"><a ng-click="logout()">Log-out</a></li>
+        <li ng-show="showAdmin"><a ui-sref="adminHome">Admin</a></li>
+        <li><p class="white-text">{{user}}</p></li>
+      </ul>
     </div>
   </nav>
 
 <div class="margin-top">
   <div class="container margin-top">
-    <div class="row flex-wrapper">
+    <div class="row flex-wrapper-column-to-row">
       <div class="parallax-container2 z-depth-2">
         <div parallax><img class="parallax-tyler" src="./Tyler.jpg"></div>
       </div>
-      <div class="col s6">
-        <h1 class="about-text">My name is Tyler</h1>
+      <div class="flex-wrapper">
+        <h1 class="about-text grey darken-2">My name is Tyler</h1>
       </div>
     </div>
   </div>
@@ -31,18 +43,25 @@
 
 <div class="parallax-container3 z-depth-2">
   <div parallax><img class="parallax-photography" src="https://s3-us-west-2.amazonaws.com/tyler-little-photography/wedding-photography-39.jpg"></div>
-  <div class="col s3 flex-wrapper-left height">
-    <h1 class="zindex about-text">I take pictures</h1>
+  <div class="flex-wrapper">
+    <h1 class="zindex about-text2">I take pictures</h1>
   </div>
 </div>
 
 
-<div class="parallax-container3 z-depth-2">
+<div class="parallax-container3 z-depth-2 show-video">
+  <div parallax><img class="parallax-video" src="./videopic.jpg"></div>
+  <div class="flex-wrapper">
+    <h1 class="zindex about-text2">and videos</h1>
+  </div>
+</div>
+
+<div class="parallax-container3 z-depth-2 hide-video">
     <video loop muted autoplay poster="" class="fullscreen-bg__video">
-      <source src="./diablo.mp4" type="video/mp4">
+      <source src="./MGL04.mp4" type="video/mp4">
       </video>
-      <div class="col s3 flex-wrapper-right height">
-        <h1 class="zindex about-text">and videos</h1>
+      <div class="col s3 flex-wrapper height">
+        <h1 class="zindex about-text3">and videos</h1>
       </div>
 </div>
 
@@ -54,36 +73,6 @@
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-<!-- Modal Trigger -->
-<div class="col">
-  <a class='btn' data-target='demoModal' modal>Show Modal</a>
-</div>
-<!-- Modal Structure -->
-<div id="demoModal" class="modal">
-  <div class="modal-content">
-
-  </div>
-  <div class="modal-footer">
-    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-  </div>
-</div>
 
 
 

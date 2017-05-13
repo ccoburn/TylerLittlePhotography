@@ -1,5 +1,4 @@
-Login
-  - style screen
+fix side-nav for all views
 
 home
   - Add tyler's new video background video
@@ -9,7 +8,7 @@ home
 about
   - facebook and other Icons
   - finish
-  - media queries
+
 photos
   - media queries
 photo album

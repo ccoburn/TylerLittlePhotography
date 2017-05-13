@@ -1,4 +1,4 @@
-<section>
+<div class="home-background">
   <div class="fullscreen-bg">
     <video loop muted autoplay poster="" class="fullscreen-bg__video">
       <source src="./diablo.mp4" type="video/mp4">
@@ -6,7 +6,7 @@
   </div>
   <nav class="z-depth-0">
     <div class="nav-wrapper">
-      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <a href="#" data-activates="mobile-nav" class="button-collapse" data-activates="nav-mobile" data-sidenav="left" data-menuwidth="200" data-closeonclick="true"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="hide-on-med-and-down flex-wrapper">
         <li><a ui-sref="home">Home</a></li>
         <li><a ui-sref="about">About</a></li>
@@ -16,7 +16,18 @@
         <li ng-hide="hideSignin"><a href="/auth">Sign-in</a></li>
         <li ng-show="showLogout"><a ng-click="logout()">Log-out</a></li>
         <li ng-show="showAdmin"><a ui-sref="adminHome">Admin</a></li>
-        <li><p>{{user}}</p></li>
+        <li ng-show="username"><p>{{user}}</p></li>
+      </ul>
+      <ul class="side-nav blue lighten-5 white-text" id="mobile-nav">
+        <li><a ui-sref="home">Home</a></li>
+        <li><a ui-sref="about">About</a></li>
+        <li><a ui-sref="photos">Photos</a></li>
+        <li><a ui-sref="videos({id:130})">Videos</a></li>
+        <li ng-show="showYourAlbums"><a ui-sref="clientHome({id:userId})">Your Albums</a></li>
+        <li ng-hide="hideSignin"><a href="/auth">Sign-in</a></li>
+        <li ng-show="showLogout"><a ng-click="logout()">Log-out</a></li>
+        <li ng-show="showAdmin"><a ui-sref="adminHome">Admin</a></li>
+        <li><p class="white-text">{{user}}</p></li>
       </ul>
     </div>
   </nav>
@@ -26,4 +37,4 @@
 <h1 class ='site-title'ng-click="showAdmin=true">Tyler Little | Photography</h1>
 
 
-</section>
+</div>

@@ -18,6 +18,7 @@ angular.module('app').controller('mainCtrl', function($scope, mediaService, sign
         console.log($scope.userId);
         $scope.showLogout = true;
         $scope.hideSignin = true;
+        $scope.username = true;
         if (user.admin === true) {
           $scope.showAdmin = true
         }
@@ -26,7 +27,8 @@ angular.module('app').controller('mainCtrl', function($scope, mediaService, sign
         }
 
       } else {
-      $scope.user = 'NOT LOGGED IN';
+      $scope.user = '';
+      $scope.username = false;
       $scope.showLogout = false;
       $scope.hideSignin = false;
       $scope.showAdmin = false;
@@ -51,8 +53,9 @@ angular.module('app').controller('mainCtrl', function($scope, mediaService, sign
 
   $scope.logout = function() {
     signinService.logout();
-    $scope.user = 'NOT LOGGED IN';
+    $scope.user = '';
     $scope.showLogout = false;
+    $scope.username = false;
     $scope.hideSignin = false;
     $scope.showAdmin = false;
     $scope.showYourAlbums = false;
