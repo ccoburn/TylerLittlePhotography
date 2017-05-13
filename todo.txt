@@ -2,15 +2,9 @@ fix side-nav for all views
 
 home
   - Add tyler's new video background video
-  - Find font for title
-  - media queries for background
-  - menu for smaller screens
 about
   - facebook and other Icons
   - finish
-
-photos
-  - media queries
 photo album
   - media queries for parallax
   - menu to change albums?

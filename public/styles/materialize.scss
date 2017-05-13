@@ -4689,9 +4689,10 @@ small {
 }
 
 .card.large {
-  width: 400px;
+  width: 275px;
   // height: 500px;
 }
+
 
 .card.horizontal {
   display: -webkit-flex;
@@ -4768,7 +4769,7 @@ small {
   top: 0;
   left: 0;
   max-width: 100%;
-  padding: 24px;
+  padding: 15px;
 }
 
 .card .card-content {
@@ -7955,8 +7956,8 @@ input[type=range]:focus::-ms-fill-upper {
 
 .carousel .carousel-item {
   display: none;
-  width: 400px;
-  height: 400px;
+  width: 200px;
+  height: 200px;
   position: absolute;
   top: 0;
   left: 0;

@@ -1,7 +1,9 @@
 <div class="grey darken-2">
 
 
-  <nav class="z-depth-0">
+  <div class="navbar-fixed">
+  <nav class="z-depth-0 navbackground">
+
     <div class="nav-wrapper">
       <a href="#" data-activates="mobile-nav" class="button-collapse" data-activates="nav-mobile" data-sidenav="left" data-menuwidth="200" data-closeonclick="true"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="hide-on-med-and-down flex-wrapper">
@@ -28,15 +30,16 @@
       </ul>
     </div>
   </nav>
-  <div class="video-container margin-bottom z-depth-3" ng-show="vimeo">
+</div>
+  <div class="video-container margin-bottom z-depth-3 main-video-position" ng-show="vimeo">
     <iframe src="{{mainVideo[0].url}}" width="1280" height="720" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
   </div>
-    <div class="video-container margin-bottom z-depth-3" ng-show="youtube">
+    <div class="video-container margin-bottom z-depth-3 main-video-position" ng-show="youtube">
     <iframe width="1280" height="720" src="{{mainVideo[0].url}}" frameborder="0" allowfullscreen></iframe>
   </div>
   <div class="container">
 
-  <div carousel dist="-25" class="carousel">
+  <div carousel dist="-25" class="carousel" id="carousel-position">
     <a class="carousel-item" href="javascript:void(0);"><img ng-src="{{videos[0].video_img}}"><div class="flex-wrapper relative1"><div ui-sref="videos({id:videos[0].id})" class="btn-floating btn-large waves-effect waves-light grey darken-4 play-button"><i class="large material-icons">play_arrow</i></div></div></a>
     <a class="carousel-item" href="javascript:void(0);"><img ng-src="{{videos[1].video_img}}"><div class="flex-wrapper relative1"><div ui-sref="videos({id:videos[1].id})" class="btn-floating btn-large waves-effect waves-light grey darken-4 play-button"><i class="large material-icons">play_arrow</i></div></div></a>
     <a class="carousel-item" href="javascript:void(0);"><img ng-src="{{videos[2].video_img}}"><div class="flex-wrapper relative1"><div ui-sref="videos({id:videos[2].id})" class="btn-floating btn-large waves-effect waves-light grey darken-4 play-button"><i class="large material-icons">play_arrow</i></div></div></a>

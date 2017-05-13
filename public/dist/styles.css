@@ -2482,6 +2482,9 @@ html {
   width: 100%;
   z-index: -101; }
 
+.main-video-position {
+  top: 0; }
+
 .home-background {
   background: url("https://s3-us-west-2.amazonaws.com/tyler-little-photography/DSC_0668.jpg");
   background-size: cover;
@@ -2614,7 +2617,7 @@ html {
   bottom: 0; }
 
 .album-cover-box {
-  width: 400;
+  width: 275;
   margin: 10px;
   display: flex;
   justify-content: center;
@@ -2655,6 +2658,13 @@ html {
 
 nav ul a {
   font-size: 1rem; }
+
+.card-background {
+  background-color: rgba(0, 0, 0, 0.1);
+  width: 275px; }
+
+#carousel-position {
+  top: -80; }
 
 @media (min-width: 400px) {
   .parallax-container3 {
@@ -2713,6 +2723,9 @@ nav ul a {
     font-size: 60px;
     top: 346;
     background-color: rgba(0, 0, 0, 0.3); }
+  .card-background {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-bottom-right-radius: 15px; }
   .parallax-container2 {
     width: 400px;
     height: 400px; }
@@ -2732,11 +2745,26 @@ nav ul a {
   .hide-video {
     display: block; }
   .show-video {
-    display: none; } }
+    display: none; }
+  .photos-padding {
+    padding-bottom: 200px; } }
 
 @media (min-width: 900px) {
   .parallax-photography {
-    left: 34%; } }
+    left: 34%; }
+  #photo-card {
+    width: 400px; }
+  .album-cover-box {
+    width: 400px; }
+  .card-background {
+    width: 400px; }
+  .main-video-position {
+    top: -64; }
+  #carousel-position {
+    top: 0; }
+    #carousel-position .carousel-item {
+      width: 400px;
+      height: 400px; } }
 
 @media (min-width: 1100px) {
   .site-title {
@@ -6367,7 +6395,7 @@ small {
   height: 400px; }
 
 .card.large {
-  width: 400px; }
+  width: 275px; }
 
 .card.horizontal {
   display: -webkit-flex;
@@ -6433,7 +6461,7 @@ small {
   top: 0;
   left: 0;
   max-width: 100%;
-  padding: 24px; }
+  padding: 15px; }
 
 .card .card-content {
   padding: 24px;
@@ -9130,8 +9158,8 @@ input[type=range]:focus::-ms-fill-upper {
 
 .carousel .carousel-item {
   display: none;
-  width: 400px;
-  height: 400px;
+  width: 200px;
+  height: 200px;
   position: absolute;
   top: 0;
   left: 0; }
