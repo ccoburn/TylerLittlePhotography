@@ -1,19 +1,17 @@
 fix side-nav for all views
+ -done?
+ copy cntlrs
+- logo on navbar, logo on top of side-nav
 
 home
   - Add tyler's new video background video
 about
   - facebook and other Icons
   - finish
-photo album
-  - media queries for parallax
-  - menu to change albums?
+
 videos
-  - media queries
-client home
-  - Media queries, finishing touches
-client album
-  - Media queries, finishing touches
+  -video links not working
+
 adminHome
   - add functions to modals
   - style
