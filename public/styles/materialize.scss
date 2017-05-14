@@ -5814,7 +5814,7 @@ button.btn-floating {
   // animation-name: jello;
   // animation-duration: .8s;
   // filter: blur(5px);
-  transform: scale(0.75);
+  transform: rotate(-5deg) scale(1.1);
 }
 
 .materialboxed.active {
@@ -7288,7 +7288,7 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 #sidenav-overlay {
-  position: fixed;
+  // position: fixed;
   top: 0;
   left: 0;
   right: 0;

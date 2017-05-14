@@ -1,4 +1,4 @@
-<div class="grey darken-2">
+
 <wedding ng-show='wedding'></wedding>
 <couples ng-show="couples"></couples>
 <families ng-show='families'></families>
@@ -15,4 +15,13 @@
       </div>
     </div>
   </div>
-</div>
+
+  <div class="photos-container2 relative2">
+    <div class="flex-wrapper-wrap">
+      <div ng-repeat="photo in photos">
+        <div class="photo-box rounded responsive-img z-depth-3">
+          <a href="{{photo.url}}"><img class="materialboxed photo" ng-src="{{photo.url}}"></a>
+        </div>
+      </div>
+    </div>
+  </div>

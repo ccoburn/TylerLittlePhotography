@@ -515,6 +515,7 @@ angular.module('app').controller('photoAlbumCtrl', function ($scope, mediaServic
         console.log($scope.userId);
         $scope.showLogout = true;
         $scope.hideSignin = true;
+        $scope.username = true;
         if (user.admin === true) {
           $scope.showAdmin = true;
         }
@@ -522,7 +523,8 @@ angular.module('app').controller('photoAlbumCtrl', function ($scope, mediaServic
           $scope.showYourAlbums = true;
         }
       } else {
-        $scope.user = 'NOT LOGGED IN';
+        $scope.user = '';
+        $scope.username = false;
         $scope.showLogout = false;
         $scope.hideSignin = false;
         $scope.showAdmin = false;
@@ -545,8 +547,9 @@ angular.module('app').controller('photoAlbumCtrl', function ($scope, mediaServic
 
   $scope.logout = function () {
     signinService.logout();
-    $scope.user = 'NOT LOGGED IN';
+    $scope.user = '';
     $scope.showLogout = false;
+    $scope.username = false;
     $scope.hideSignin = false;
     $scope.showAdmin = false;
     $scope.showYourAlbums = false;

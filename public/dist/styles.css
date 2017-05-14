@@ -2455,6 +2455,7 @@ html {
   font-size: 30px;
   padding: 15px;
   border-radius: 5px;
+  background-color: grey;
   position: relative;
   top: -60;
   box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3); }
@@ -2477,10 +2478,16 @@ html {
   top: -60;
   box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3); }
 
+#client-name-size {
+  font-size: 2.2rem; }
+
 .full-background {
   margin-top: 0;
   width: 100%;
-  z-index: -101; }
+  z-index: -101;
+  background: url("../bck.jpg");
+  background-size: cover;
+  background-repeat: no-repeat; }
 
 .main-video-position {
   top: 0; }
@@ -2496,6 +2503,9 @@ html {
 
 .zindex {
   z-index: 5; }
+
+.vh {
+  height: auto; }
 
 .height {
   height: 600px; }
@@ -2515,15 +2525,10 @@ html {
   -webkit-align-content: stretch;
   align-content: stretch; }
 
-.photos-container {
-  margin: 0 auto;
-  max-width: 1280px;
-  width: 75%; }
-
 .parallax-wedding {
-  left: 52%;
-  bottom: 32%;
-  width: 2000px; }
+  left: 56%;
+  bottom: 36%;
+  width: 800px; }
 
 .parallax-couples {
   left: 60%;
@@ -2563,6 +2568,11 @@ html {
 .hide-video {
   display: none; }
 
+.parallax-container4 {
+  position: relative;
+  overflow: hidden;
+  height: 300px; }
+
 .parallax-container2 {
   position: relative;
   overflow: hidden;
@@ -2577,9 +2587,20 @@ html {
   margin-top: 100px;
   margin-bottom: 100px; }
 
+.photos-container {
+  display: none;
+  margin: 0 auto;
+  max-width: 1280px;
+  width: 100%; }
+
+.photos-container2 {
+  margin: 0 auto;
+  max-width: 1280px;
+  width: 100%; }
+
 .photo-box {
-  width: 300px;
-  height: 300px;
+  width: 130px;
+  height: 130px;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -2588,7 +2609,7 @@ html {
 
 .photo {
   margin: 10px;
-  width: 600px; }
+  width: 205px; }
 
 .thumnail {
   width: 300px; }
@@ -2601,7 +2622,7 @@ html {
 
 .relative2 {
   position: relative;
-  top: -110px; }
+  top: -68px; }
 
 .play-button {
   opacity: 0.5;
@@ -2689,6 +2710,9 @@ nav ul a {
     font-size: 50px; }
   .home-background {
     background: none; }
+  .relative2 {
+    position: relative;
+    top: -110px; }
   .fullscreen-bg {
     display: block;
     position: fixed;
@@ -2700,7 +2724,6 @@ nav ul a {
     z-index: -100; }
   .fullscreen-bg__video {
     display: block;
-    padding-top: 20px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -2738,6 +2761,14 @@ nav ul a {
   .parallax-container3 {
     height: 500px;
     margin-top: 210px; }
+  .parallax-container4 {
+    position: relative;
+    overflow: hidden;
+    height: 500px; }
+  .parallax-wedding {
+    left: 52%;
+    bottom: 32%;
+    width: 2000px; }
   .parallax-photography {
     left: 20%;
     bottom: -8%;
@@ -2747,7 +2778,22 @@ nav ul a {
   .show-video {
     display: none; }
   .photos-padding {
-    padding-bottom: 200px; } }
+    padding-bottom: 200px; }
+  .vh {
+    height: 100vh; }
+  #client-name-size {
+    font-size: 3.2rem; }
+  .photos-container {
+    display: block;
+    width: 85%; }
+  .photos-container2 {
+    display: none; }
+  .photo-box {
+    width: 300px;
+    height: 300px; }
+  .photo {
+    margin: 10px;
+    width: 450px; } }
 
 @media (min-width: 900px) {
   .parallax-photography {
@@ -2764,7 +2810,18 @@ nav ul a {
     top: 0; }
     #carousel-position .carousel-item {
       width: 400px;
-      height: 400px; } }
+      height: 400px; }
+  #client-name-size {
+    font-size: 4.2rem; }
+  .photos-container {
+    display: block;
+    width: 75%; }
+  .photo-box {
+    width: 300px;
+    height: 300px; }
+  .photo {
+    margin: 10px;
+    width: 450px; } }
 
 @media (min-width: 1100px) {
   .site-title {
@@ -2773,7 +2830,8 @@ nav ul a {
   .about-text {
     font-size: 80px;
     box-shadow: none;
-    top: 0; }
+    top: 0;
+    background-color: transparent; }
   .about-text3 {
     font-size: 80px;
     box-shadow: none;
@@ -2794,7 +2852,9 @@ nav ul a {
   .parallax-photography {
     left: 35%;
     bottom: -8%;
-    width: 2000px; } }
+    width: 2000px; }
+  .vh {
+    height: auto; } }
 
 @media (min-width: 1500px) {
   .parallax-photography {
@@ -2802,7 +2862,9 @@ nav ul a {
 
 @media (min-width: 2000px) {
   nav ul a {
-    font-size: 1.5rem; } }
+    font-size: 1.5rem; }
+  .vh {
+    height: 100vh; } }
 
 /*!
  * Materialize v0.98.1 (http://materializecss.com)
@@ -7347,7 +7409,7 @@ button.btn-floating {
   transition: .4s; }
 
 .materialboxed:hover:not(.active) {
-  transform: scale(0.75); }
+  transform: rotate(-5deg) scale(1.1); }
 
 .materialboxed.active {
   cursor: -webkit-zoom-out;
@@ -8629,7 +8691,6 @@ input[type=range]:focus::-ms-fill-upper {
   padding: 0; }
 
 #sidenav-overlay {
-  position: fixed;
   top: 0;
   left: 0;
   right: 0;

@@ -1,4 +1,4 @@
-<div class="grey darken-2">
+<div class="">
   <nav class="navbackground">
     <div class="nav-wrapper">
       <a href="#" data-activates="mobile-nav" class="button-collapse" data-activates="nav-mobile" data-sidenav="left" data-menuwidth="200" data-closeonclick="true"><i class="material-icons">menu</i></a>
@@ -31,7 +31,9 @@
 <div class="padding-bottom">
 
   <div class="container">
-    <h1>{{albums[0].username}}</h1>
+    <div class="flex-wrapper">
+      <h1 id="client-name-size" class="white-text">{{albums[0].username}}</h1>
+    </div>
     <div class="flex-wrapper-wrap">
       <div class="album-cover-box rounded" ng-repeat="album in albums">
         <div class="row rounded">
