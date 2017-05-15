@@ -1,12 +1,10 @@
-fix side-nav for all views
- -done?
- copy cntlrs
+
 
 home
   - Add tyler's new video background video
+  
 about
-  - facebook and other Icons
-  - finish
+ links for facebook and other Icons
 
 videos
   -video links not working

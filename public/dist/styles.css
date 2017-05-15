@@ -2424,6 +2424,11 @@ html {
   justify-content: space-around;
   align-items: center; }
 
+.flex-wrapper-center {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
 .flex-wrapper-column-to-row {
   display: flex;
   justify-content: space-around;
@@ -2481,6 +2486,17 @@ html {
   top: 240;
   box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3); }
 
+.about-text4 {
+  color: floralwhite;
+  font-size: 25px;
+  width: 95%;
+  text-align: center;
+  padding: 12px;
+  border-radius: 5px;
+  position: relative;
+  top: 240;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3); }
+
 .about-text3 {
   color: floralwhite;
   font-size: 44px;
@@ -2489,6 +2505,10 @@ html {
   position: relative;
   top: -60;
   box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3); }
+
+.about-icon {
+  width: 40px;
+  margin: 0 10 100 10; }
 
 #client-name-size {
   font-size: 2.2rem; }
@@ -2565,6 +2585,11 @@ html {
 .parallax-photography {
   left: 1%;
   bottom: 10%;
+  width: 800px; }
+
+.parallax-sanfran {
+  left: 16%;
+  bottom: -5%;
   width: 800px; }
 
 .parallax-video {
@@ -2707,11 +2732,18 @@ nav ul a {
   .parallax-container3 {
     height: 400px; }
   .parallax-photography {
-    left: -26%;
+    left: 7%;
+    bottom: -36%;
+    width: 1313px; }
+  .parallax-sanfran {
+    left: 9%;
     bottom: -13%;
     width: 1313px; }
   .about-text2 {
-    top: 280; } }
+    top: 280; }
+  .about-text4 {
+    font-size: 34px;
+    top: 251; } }
 
 @media (min-width: 500px) {
   .parallax-photography {
@@ -2723,10 +2755,15 @@ nav ul a {
   .parallax-newborns {
     left: 60%;
     bottom: 49%;
-    width: 800px; } }
+    width: 800px; }
+  .about-text4 {
+    font-size: 34px;
+    top: 290; } }
 
 @media (min-width: 600px) {
   .parallax-photography {
+    left: 15%; }
+  .parallax-sanfran {
     left: 15%; }
   .parallax-families {
     left: 43%;
@@ -2794,6 +2831,13 @@ nav ul a {
     font-size: 60px;
     top: 346;
     background-color: rgba(0, 0, 0, 0.3); }
+  .about-text4 {
+    color: floralwhite;
+    font-size: 51px;
+    top: 323; }
+  .about-icon {
+    width: 50px;
+    margin: 0 10 100 10; }
   .card-background {
     background-color: rgba(0, 0, 0, 0.1); }
   .parallax-container2 {
@@ -2833,6 +2877,10 @@ nav ul a {
     bottom: 25%;
     width: 1900px; }
   .parallax-photography {
+    left: 27%;
+    bottom: -28%;
+    width: 1469px; }
+  .parallax-sanfran {
     left: 20%;
     bottom: -8%;
     width: 1469px; }
@@ -2863,6 +2911,9 @@ nav ul a {
     width: 700px; }
   .parallax-photography {
     left: 34%; }
+  .parallax-sanfran {
+    left: 34%;
+    bottom: -28%; }
   #photo-card {
     width: 400px; }
   .album-cover-box {
@@ -2892,7 +2943,10 @@ nav ul a {
   .parallax-newborns {
     left: 81%;
     bottom: 72%;
-    width: 1900px; } }
+    width: 1900px; }
+  .about-text4 {
+    font-size: 51px;
+    top: 368; } }
 
 @media (min-width: 1100px) {
   .title-pic {
@@ -2918,6 +2972,10 @@ nav ul a {
     left: -235;
     background-color: transparent;
     box-shadow: none; }
+  .about-text4 {
+    font-size: 64px;
+    top: 369;
+    box-shadow: none; }
   .flex-wrapper-column-to-row {
     flex-direction: row; }
   .parallax-container3 {
@@ -2927,6 +2985,10 @@ nav ul a {
   .parallax-photography {
     left: 35%;
     bottom: -8%;
+    width: 2000px; }
+  .parallax-sanfran {
+    left: 50%;
+    bottom: -28%;
     width: 2000px; }
   .parallax-families {
     left: 50%;
