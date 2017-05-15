@@ -2442,6 +2442,9 @@ html {
   align-items: center;
   margin-right: 400px; }
 
+.sidenav-title {
+  width: 170px; }
+
 .site-title {
   color: white;
   font-size: 35px;
@@ -2449,6 +2452,15 @@ html {
   text-align: center;
   font-family: 'Dosis', sans-serif;
   font-weight: 200; }
+
+.title-margin {
+  margin-top: 40px; }
+
+.title-pic {
+  width: 200px; }
+
+.title-pic-white {
+  display: none; }
 
 .about-text {
   color: floralwhite;
@@ -2734,6 +2746,14 @@ nav ul a {
     width: 800px; } }
 
 @media (min-width: 700px) {
+  .title-margin {
+    margin-top: 100px; }
+  .title-pic-white {
+    display: flex; }
+  .title-pic-black {
+    display: none; }
+  .title-pic {
+    width: 500px; }
   .site-title {
     font-size: 50px; }
   .home-background {
@@ -2839,6 +2859,8 @@ nav ul a {
     width: 450px; } }
 
 @media (min-width: 900px) {
+  .title-pic {
+    width: 700px; }
   .parallax-photography {
     left: 34%; }
   #photo-card {
@@ -2873,6 +2895,10 @@ nav ul a {
     width: 1900px; } }
 
 @media (min-width: 1100px) {
+  .title-pic {
+    width: 700px; }
+  .title-margin {
+    margin-top: 135px; }
   .site-title {
     font-size: 85px;
     margin-top: 135px; }
@@ -2926,6 +2952,8 @@ nav ul a {
     left: 50%; } }
 
 @media (min-width: 1900px) {
+  .title-pic {
+    width: 900px; }
   nav ul a {
     font-size: 1.2rem; }
   .vh {

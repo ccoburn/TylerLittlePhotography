@@ -19,6 +19,10 @@
         <li ng-show="username"><p>{{user}}</p></li>
       </ul>
       <ul class="side-nav blue lighten-5 white-text" id="mobile-nav">
+        <li><div class="userView">
+          <a href="#!user"><img class="sidenav-title" src="./title_white.png"></a>
+          </div></li>
+          <li><div class="divider"></div></li>
         <li><a ui-sref="home">Home</a></li>
         <li><a ui-sref="about">About</a></li>
         <li><a ui-sref="photos">Photos</a></li>
@@ -33,8 +37,16 @@
   </nav>
 
 
+<div class="flex-wrapper title-margin title-pic-white">
+  <img class="title-pic"src="./title_white.png" alt="">
 
-<h1 class ='site-title'ng-click="showAdmin=true">Tyler Little | Photography</h1>
+</div>
+
+<div class="flex-wrapper title-margin title-pic-black">
+  <img class="title-pic"src="./title.png" alt="">
+
+</div>
+<!-- <h1 class ='site-title'ng-click="showAdmin=true">Tyler Little | Photography</h1> -->
 
 
 </div>
