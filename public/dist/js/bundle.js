@@ -330,7 +330,6 @@ angular.module('app').controller('clientAlbumCtrl', function ($scope, mediaServi
     $scope.showYourAlbums = false;
   };
 });
-"use strict";
 'use strict';
 
 angular.module('app').controller('clientHomeCtrl', function ($scope, mediaService, $stateParams, signinService, $location) {
@@ -406,12 +405,6 @@ angular.module('app').controller('clientHomeCtrl', function ($scope, mediaServic
   };
 
   $scope.getClientAlbums();
-});
-'use strict';
-
-angular.module('app').controller('contactCtrl', function ($scope) {
-
-  $scope.test = "contact";
 });
 'use strict';
 
@@ -636,45 +629,9 @@ angular.module('app').controller('photosCtrl', function ($scope, mediaService, s
     $scope.showYourAlbums = false;
   };
 });
-"use strict";
 'use strict';
 
 angular.module('app').controller('signinCtrl', function ($scope, signinService, $state) {
-
-  function getUser() {
-    signinService.getUser().then(function (user) {
-      if (user) $scope.user = user.username;else $scope.user = 'NOT LOGGED IN';
-    });
-  }
-
-  getUser();
-
-  $scope.loginLocal = function (username, password) {
-    console.log('Logging in with', username, password);
-    signinService.loginLocal({
-      username: username,
-      password: password
-    }).then(function (res) {
-      getUser();
-    });
-  };
-
-  $scope.logout = signinService.logout;
-});
-"use strict";
-'use strict';
-
-angular.module('app').controller('videoAlbumCtrl', function ($scope, mediaService, $stateParams, signinService) {
-
-  $scope.test = "videoAlbum";
-
-  $scope.getSampleVideos = function () {
-    mediaService.getSampleVideos($stateParams.id).then(function (response) {
-      $scope.videos = response;
-    });
-  };
-
-  $scope.getSampleVideos();
 
   function getUser() {
     signinService.getUser().then(function (user) {
@@ -790,7 +747,6 @@ angular.module('app').controller('videosCtrl', function ($scope, mediaService, $
     $scope.showYourAlbums = false;
   };
 });
-"use strict";
 'use strict';
 
 angular.module('app').service('mediaService', function ($http) {
