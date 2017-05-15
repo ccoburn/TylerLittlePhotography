@@ -156,10 +156,10 @@ angular.module('app').controller('adminHomeCtrl', function ($scope, mediaService
 
   function getUser() {
     signinService.getUser().then(function (user) {
-      if (!user.admin) {
-        $scope.redirect();
-      }
       if (user) {
+        if (!user.admin) {
+          $scope.redirect();
+        }
         $scope.user = user.username;
         $scope.userId = user.id;
         console.log($scope.userId);
