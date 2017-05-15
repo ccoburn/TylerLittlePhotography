@@ -7708,7 +7708,7 @@ Picker.extend( 'pickadate', DatePicker )
 
         function setupEvents() {
           if (typeof window.ontouchstart !== 'undefined') {
-            // view[0].addEventListener('touchstart', tap);
+            view[0].addEventListener('touchstart', tap);
             view[0].addEventListener('touchmove', drag);
             view[0].addEventListener('touchend', release);
           }
@@ -7901,7 +7901,7 @@ Picker.extend( 'pickadate', DatePicker )
         function click(e) {
           // Disable clicks if carousel was dragged.
           if (dragged) {
-            e.preventDefault();
+            // e.preventDefault();
             e.stopPropagation();
             return false;
 
@@ -7911,7 +7911,7 @@ Picker.extend( 'pickadate', DatePicker )
 
             // Disable clicks if carousel was shifted by click
             if (diff !== 0) {
-              e.preventDefault();
+              // e.preventDefault();
               e.stopPropagation();
             }
             cycleTo(clickedIndex);
