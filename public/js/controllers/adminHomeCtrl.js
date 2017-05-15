@@ -96,6 +96,14 @@ $scope.alert = function() {
     })
   }
 
+  $scope.getAllPhotos = function(){
+    mediaService.getMedia().then(function(response) {
+      $scope.photos = response;
+    })
+  }
+
+$scope.getAllPhotos();
+
 
 
   $scope.logout = function() {

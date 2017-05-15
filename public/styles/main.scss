@@ -269,6 +269,18 @@
   margin: 10px;
   width: 205px;
 }
+.manage-photo {
+  width: 200px;
+  margin-bottom: 10px
+}
+.admin-btn {
+  margin-bottom: 10px;
+}
+
+.filter-box {
+  display:flex;
+  justify-content: center;
+}
 
 .thumnail {
   width: 300px;
@@ -362,6 +374,25 @@
 nav ul a {
   font-size: 1rem;
 }
+
+.modal-footer .btn i {
+  font-size: 2rem;
+  border-radius: 15px;
+}
+#modal-btns {
+  font-size: 2rem;
+}
+.modal-container {
+  margin: 0 50px;
+}
+.modal-triggers {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+// .modal-triggers .btn {
+//   border-radius: 15px;
+// }
 
 .card-background {
   background-color: rgba(0, 0, 0, 0.1);

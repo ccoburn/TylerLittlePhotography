@@ -2,14 +2,12 @@
 
 home
   - Add tyler's new video background video
-  
-about
- links for facebook and other Icons
+
+
 
 videos
   -video links not working
 
 adminHome
-  - add functions to modals
   - style
   - test functions

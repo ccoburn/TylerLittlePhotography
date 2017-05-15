@@ -238,6 +238,14 @@ angular.module('app').controller('adminHomeCtrl', function ($scope, mediaService
     });
   };
 
+  $scope.getAllPhotos = function () {
+    mediaService.getMedia().then(function (response) {
+      $scope.photos = response;
+    });
+  };
+
+  $scope.getAllPhotos();
+
   $scope.logout = function () {
     signinService.logout();
     $scope.user = '';
