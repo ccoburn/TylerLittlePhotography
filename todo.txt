@@ -1,13 +1,3 @@
 
-
-home
-  - Add tyler's new video background video
-
-
-
 videos
   -video links not working
-
-adminHome
-  - style
-  - test functions

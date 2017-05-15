@@ -7084,7 +7084,8 @@ input[type=range]:focus::-ms-fill-upper {
   left: 0; }
 
 .carousel .carousel-item img {
-  width: 100%; }
+  width: 100%;
+  border-radius: 10px; }
 
 .carousel .indicators {
   position: absolute;
