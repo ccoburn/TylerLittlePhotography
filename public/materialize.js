@@ -7901,7 +7901,7 @@ Picker.extend( 'pickadate', DatePicker )
         function click(e) {
           // Disable clicks if carousel was dragged.
           if (dragged) {
-            // e.preventDefault();
+            e.preventDefault();
             e.stopPropagation();
             return false;
 
@@ -7911,7 +7911,7 @@ Picker.extend( 'pickadate', DatePicker )
 
             // Disable clicks if carousel was shifted by click
             if (diff !== 0) {
-              // e.preventDefault();
+              e.preventDefault();
               e.stopPropagation();
             }
             cycleTo(clickedIndex);
@@ -7941,7 +7941,7 @@ Picker.extend( 'pickadate', DatePicker )
         }
 
         function tap(e) {
-          e.preventDefault();
+          // e.preventDefault();
           pressed = true;
           dragged = false;
           vertical_dragged = false;
