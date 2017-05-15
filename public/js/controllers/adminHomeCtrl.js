@@ -10,9 +10,9 @@ $scope.alert = function() {
 
   function getUser() {
     signinService.getUser().then(function(user) {
-      // if (!user.admin) {
-      //   $scope.redirect();
-      // }
+      if (!user.admin) {
+        $scope.redirect();
+      }
       if (user) {
         $scope.user = user.username;
         $scope.userId = user.id;
@@ -28,7 +28,7 @@ $scope.alert = function() {
         }
 
       } else {
-      // $scope.redirect();
+      $scope.redirect();
       $scope.user = '';
       $scope.username = false;
       $scope.showLogout = false;

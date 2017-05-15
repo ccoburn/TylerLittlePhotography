@@ -156,9 +156,9 @@ angular.module('app').controller('adminHomeCtrl', function ($scope, mediaService
 
   function getUser() {
     signinService.getUser().then(function (user) {
-      // if (!user.admin) {
-      //   $scope.redirect();
-      // }
+      if (!user.admin) {
+        $scope.redirect();
+      }
       if (user) {
         $scope.user = user.username;
         $scope.userId = user.id;
@@ -173,7 +173,7 @@ angular.module('app').controller('adminHomeCtrl', function ($scope, mediaService
           $scope.showYourAlbums = true;
         }
       } else {
-        // $scope.redirect();
+        $scope.redirect();
         $scope.user = '';
         $scope.username = false;
         $scope.showLogout = false;
@@ -279,9 +279,9 @@ angular.module('app').controller('clientAlbumCtrl', function ($scope, mediaServi
         console.log($scope.userId);
         $scope.showLogout = true;
         $scope.hideSignin = true;
-        // if (parseInt(user.album) !== parseInt($stateParams.id) && user.admin !== true) {
-        //   $scope.redirect();
-        // }
+        if (parseInt(user.album) !== parseInt($stateParams.id) && user.admin !== true) {
+          $scope.redirect();
+        }
         $scope.username = true;
         if (user.admin === true) {
           $scope.showAdmin = true;
@@ -290,7 +290,7 @@ angular.module('app').controller('clientAlbumCtrl', function ($scope, mediaServi
           $scope.showYourAlbums = true;
         }
       } else {
-        // $scope.redirect();
+        $scope.redirect();
         $scope.user = '';
         $scope.username = false;
         $scope.showLogout = false;
@@ -354,9 +354,9 @@ angular.module('app').controller('clientHomeCtrl', function ($scope, mediaServic
         console.log($scope.userId);
         $scope.showLogout = true;
         $scope.hideSignin = true;
-        // if (parseInt(user.id) !== parseInt($stateParams.id) && user.admin !== true) {
-        //   $scope.redirect();
-        // }
+        if (parseInt(user.id) !== parseInt($stateParams.id) && user.admin !== true) {
+          $scope.redirect();
+        }
         $scope.username = true;
         if (user.admin === true) {
           $scope.showAdmin = true;
@@ -365,7 +365,7 @@ angular.module('app').controller('clientHomeCtrl', function ($scope, mediaServic
           $scope.showYourAlbums = true;
         }
       } else {
-        // $scope.redirect();
+        $scope.redirect();
         $scope.user = '';
         $scope.username = false;
         $scope.showLogout = false;

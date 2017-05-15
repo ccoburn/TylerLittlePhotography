@@ -19,9 +19,9 @@ angular.module('app').controller('clientHomeCtrl', function($scope, mediaService
         console.log($scope.userId);
         $scope.showLogout = true;
         $scope.hideSignin = true;
-        // if (parseInt(user.id) !== parseInt($stateParams.id) && user.admin !== true) {
-        //   $scope.redirect();
-        // }
+        if (parseInt(user.id) !== parseInt($stateParams.id) && user.admin !== true) {
+          $scope.redirect();
+        }
         $scope.username = true;
         if (user.admin === true) {
           $scope.showAdmin = true
@@ -31,7 +31,7 @@ angular.module('app').controller('clientHomeCtrl', function($scope, mediaService
         }
 
       } else {
-        // $scope.redirect();
+      $scope.redirect();
       $scope.user = '';
       $scope.username = false;
       $scope.showLogout = false;

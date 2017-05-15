@@ -55,6 +55,10 @@ html {
 @import url("https://fonts.googleapis.com/css?family=Baloo|Dosis:200,400");
 .flex-wrapper {
   display: flex;
+  align-items: center; }
+
+.flex-wrapper {
+  display: flex;
   justify-content: space-around;
   align-items: center; }
 

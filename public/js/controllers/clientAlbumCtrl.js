@@ -21,9 +21,9 @@ angular.module('app').controller('clientAlbumCtrl', function($scope, mediaServic
         console.log($scope.userId);
         $scope.showLogout = true;
         $scope.hideSignin = true;
-        // if (parseInt(user.album) !== parseInt($stateParams.id) && user.admin !== true) {
-        //   $scope.redirect();
-        // }
+        if (parseInt(user.album) !== parseInt($stateParams.id) && user.admin !== true) {
+          $scope.redirect();
+        }
         $scope.username = true;
         if (user.admin === true) {
           $scope.showAdmin = true
@@ -33,7 +33,7 @@ angular.module('app').controller('clientAlbumCtrl', function($scope, mediaServic
         }
 
       } else {
-        // $scope.redirect();
+      $scope.redirect();
       $scope.user = '';
       $scope.username = false;
       $scope.showLogout = false;
