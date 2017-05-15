@@ -13,13 +13,6 @@ angular.module('app').controller('photosCtrl', function($scope, mediaService, si
 
   function getUser() {
     signinService.getUser().then(function(user) {
-      if (user) $scope.user = user.username;
-      else   $scope.user = 'NOT LOGGED IN';
-    })
-  }
-
-  function getUser() {
-    signinService.getUser().then(function(user) {
       console.log(user);
       if (user) {
         $scope.user = user.username;
@@ -27,6 +20,7 @@ angular.module('app').controller('photosCtrl', function($scope, mediaService, si
         console.log($scope.userId);
         $scope.showLogout = true;
         $scope.hideSignin = true;
+        $scope.username = true;
         if (user.admin === true) {
           $scope.showAdmin = true
         }
@@ -35,7 +29,8 @@ angular.module('app').controller('photosCtrl', function($scope, mediaService, si
         }
 
       } else {
-      $scope.user = 'NOT LOGGED IN';
+      $scope.user = '';
+      $scope.username = false;
       $scope.showLogout = false;
       $scope.hideSignin = false;
       $scope.showAdmin = false;
@@ -60,8 +55,9 @@ angular.module('app').controller('photosCtrl', function($scope, mediaService, si
 
   $scope.logout = function() {
     signinService.logout();
-    $scope.user = 'NOT LOGGED IN';
+    $scope.user = '';
     $scope.showLogout = false;
+    $scope.username = false;
     $scope.hideSignin = false;
     $scope.showAdmin = false;
     $scope.showYourAlbums = false;

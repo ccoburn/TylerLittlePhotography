@@ -16,24 +16,25 @@ $scope.alert = function() {
       if (user) {
         $scope.user = user.username;
         $scope.userId = user.id;
+        console.log($scope.userId);
         $scope.showLogout = true;
         $scope.hideSignin = true;
+        $scope.username = true;
         if (user.admin === true) {
           $scope.showAdmin = true
-        } else {
-          $scope.redirect();
         }
         if (user.album) {
           $scope.showYourAlbums = true;
         }
 
       } else {
-        $scope.redirect();
-        $scope.user = 'NOT LOGGED IN';
-        $scope.showLogout = false;
-        $scope.hideSignin = false;
-        $scope.showAdmin = false;
-        $scope.showYourAlbums = false;
+      // $scope.redirect();
+      $scope.user = '';
+      $scope.username = false;
+      $scope.showLogout = false;
+      $scope.hideSignin = false;
+      $scope.showAdmin = false;
+      $scope.showYourAlbums = false;
       }
     })
   }
@@ -99,8 +100,9 @@ $scope.alert = function() {
 
   $scope.logout = function() {
     signinService.logout();
-    $scope.user = 'NOT LOGGED IN';
+    $scope.user = '';
     $scope.showLogout = false;
+    $scope.username = false;
     $scope.hideSignin = false;
     $scope.showAdmin = false;
     $scope.showYourAlbums = false;

@@ -1,7 +1,6 @@
 fix side-nav for all views
  -done?
  copy cntlrs
-- logo on navbar, logo on top of side-nav
 
 home
   - Add tyler's new video background video

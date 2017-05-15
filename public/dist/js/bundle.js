@@ -100,6 +100,7 @@ angular.module('app').controller('aboutCtrl', function ($scope, signinService) {
         console.log($scope.userId);
         $scope.showLogout = true;
         $scope.hideSignin = true;
+        $scope.username = true;
         if (user.admin === true) {
           $scope.showAdmin = true;
         }
@@ -107,7 +108,8 @@ angular.module('app').controller('aboutCtrl', function ($scope, signinService) {
           $scope.showYourAlbums = true;
         }
       } else {
-        $scope.user = 'NOT LOGGED IN';
+        $scope.user = '';
+        $scope.username = false;
         $scope.showLogout = false;
         $scope.hideSignin = false;
         $scope.showAdmin = false;
@@ -130,8 +132,9 @@ angular.module('app').controller('aboutCtrl', function ($scope, signinService) {
 
   $scope.logout = function () {
     signinService.logout();
-    $scope.user = 'NOT LOGGED IN';
+    $scope.user = '';
     $scope.showLogout = false;
+    $scope.username = false;
     $scope.hideSignin = false;
     $scope.showAdmin = false;
     $scope.showYourAlbums = false;
@@ -159,19 +162,20 @@ angular.module('app').controller('adminHomeCtrl', function ($scope, mediaService
       if (user) {
         $scope.user = user.username;
         $scope.userId = user.id;
+        console.log($scope.userId);
         $scope.showLogout = true;
         $scope.hideSignin = true;
+        $scope.username = true;
         if (user.admin === true) {
           $scope.showAdmin = true;
-        } else {
-          $scope.redirect();
         }
         if (user.album) {
           $scope.showYourAlbums = true;
         }
       } else {
-        $scope.redirect();
-        $scope.user = 'NOT LOGGED IN';
+        // $scope.redirect();
+        $scope.user = '';
+        $scope.username = false;
         $scope.showLogout = false;
         $scope.hideSignin = false;
         $scope.showAdmin = false;
@@ -236,8 +240,9 @@ angular.module('app').controller('adminHomeCtrl', function ($scope, mediaService
 
   $scope.logout = function () {
     signinService.logout();
-    $scope.user = 'NOT LOGGED IN';
+    $scope.user = '';
     $scope.showLogout = false;
+    $scope.username = false;
     $scope.hideSignin = false;
     $scope.showAdmin = false;
     $scope.showYourAlbums = false;
@@ -269,6 +274,7 @@ angular.module('app').controller('clientAlbumCtrl', function ($scope, mediaServi
         // if (parseInt(user.album) !== parseInt($stateParams.id) && user.admin !== true) {
         //   $scope.redirect();
         // }
+        $scope.username = true;
         if (user.admin === true) {
           $scope.showAdmin = true;
         }
@@ -277,7 +283,8 @@ angular.module('app').controller('clientAlbumCtrl', function ($scope, mediaServi
         }
       } else {
         // $scope.redirect();
-        $scope.user = 'NOT LOGGED IN';
+        $scope.user = '';
+        $scope.username = false;
         $scope.showLogout = false;
         $scope.hideSignin = false;
         $scope.showAdmin = false;
@@ -297,7 +304,6 @@ angular.module('app').controller('clientAlbumCtrl', function ($scope, mediaServi
       getUser();
     });
   };
-
   $scope.getClientAlbum = function () {
     mediaService.getClientAlbum($stateParams.id).then(function (response) {
       $scope.photos = response;
@@ -308,8 +314,9 @@ angular.module('app').controller('clientAlbumCtrl', function ($scope, mediaServi
 
   $scope.logout = function () {
     signinService.logout();
-    $scope.user = 'NOT LOGGED IN';
+    $scope.user = '';
     $scope.showLogout = false;
+    $scope.username = false;
     $scope.hideSignin = false;
     $scope.showAdmin = false;
     $scope.showYourAlbums = false;
@@ -342,6 +349,7 @@ angular.module('app').controller('clientHomeCtrl', function ($scope, mediaServic
         // if (parseInt(user.id) !== parseInt($stateParams.id) && user.admin !== true) {
         //   $scope.redirect();
         // }
+        $scope.username = true;
         if (user.admin === true) {
           $scope.showAdmin = true;
         }
@@ -350,7 +358,8 @@ angular.module('app').controller('clientHomeCtrl', function ($scope, mediaServic
         }
       } else {
         // $scope.redirect();
-        $scope.user = 'NOT LOGGED IN';
+        $scope.user = '';
+        $scope.username = false;
         $scope.showLogout = false;
         $scope.hideSignin = false;
         $scope.showAdmin = false;
@@ -373,8 +382,9 @@ angular.module('app').controller('clientHomeCtrl', function ($scope, mediaServic
 
   $scope.logout = function () {
     signinService.logout();
-    $scope.user = 'NOT LOGGED IN';
+    $scope.user = '';
     $scope.showLogout = false;
+    $scope.username = false;
     $scope.hideSignin = false;
     $scope.showAdmin = false;
     $scope.showYourAlbums = false;
@@ -571,12 +581,6 @@ angular.module('app').controller('photosCtrl', function ($scope, mediaService, s
 
   function getUser() {
     signinService.getUser().then(function (user) {
-      if (user) $scope.user = user.username;else $scope.user = 'NOT LOGGED IN';
-    });
-  }
-
-  function getUser() {
-    signinService.getUser().then(function (user) {
       console.log(user);
       if (user) {
         $scope.user = user.username;
@@ -584,6 +588,7 @@ angular.module('app').controller('photosCtrl', function ($scope, mediaService, s
         console.log($scope.userId);
         $scope.showLogout = true;
         $scope.hideSignin = true;
+        $scope.username = true;
         if (user.admin === true) {
           $scope.showAdmin = true;
         }
@@ -591,7 +596,8 @@ angular.module('app').controller('photosCtrl', function ($scope, mediaService, s
           $scope.showYourAlbums = true;
         }
       } else {
-        $scope.user = 'NOT LOGGED IN';
+        $scope.user = '';
+        $scope.username = false;
         $scope.showLogout = false;
         $scope.hideSignin = false;
         $scope.showAdmin = false;
@@ -614,8 +620,9 @@ angular.module('app').controller('photosCtrl', function ($scope, mediaService, s
 
   $scope.logout = function () {
     signinService.logout();
-    $scope.user = 'NOT LOGGED IN';
+    $scope.user = '';
     $scope.showLogout = false;
+    $scope.username = false;
     $scope.hideSignin = false;
     $scope.showAdmin = false;
     $scope.showYourAlbums = false;
@@ -735,6 +742,7 @@ angular.module('app').controller('videosCtrl', function ($scope, mediaService, $
         console.log($scope.userId);
         $scope.showLogout = true;
         $scope.hideSignin = true;
+        $scope.username = true;
         if (user.admin === true) {
           $scope.showAdmin = true;
         }
@@ -742,7 +750,8 @@ angular.module('app').controller('videosCtrl', function ($scope, mediaService, $
           $scope.showYourAlbums = true;
         }
       } else {
-        $scope.user = 'NOT LOGGED IN';
+        $scope.user = '';
+        $scope.username = false;
         $scope.showLogout = false;
         $scope.hideSignin = false;
         $scope.showAdmin = false;
@@ -765,8 +774,9 @@ angular.module('app').controller('videosCtrl', function ($scope, mediaService, $
 
   $scope.logout = function () {
     signinService.logout();
-    $scope.user = 'NOT LOGGED IN';
+    $scope.user = '';
     $scope.showLogout = false;
+    $scope.username = false;
     $scope.hideSignin = false;
     $scope.showAdmin = false;
     $scope.showYourAlbums = false;
