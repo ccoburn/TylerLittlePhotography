@@ -354,6 +354,9 @@ html {
 .navbackground {
   background-color: rgba(0, 0, 0, 0.3); }
 
+.navbackground2 {
+  background-color: rgba(0, 0, 0, 0.2); }
+
 .zoom img {
   -moz-transition: all 0.3s;
   -webkit-transition: all 0.3s;
@@ -570,6 +573,14 @@ nav ul a {
     width: 450px; } }
 
 @media (min-width: 900px) {
+  .navbackground {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px; }
+  .navbackground2 {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px; }
   .title-pic {
     width: 700px; }
   .parallax-photography {
